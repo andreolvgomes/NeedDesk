@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TodayTask.Domain.Models
 {
-    public class Soliandamento
+    public class Soliteracao
     {
         public Int64 PerfilId { get; set; }
         public Int64 SolicitacaoId { get; set; }
