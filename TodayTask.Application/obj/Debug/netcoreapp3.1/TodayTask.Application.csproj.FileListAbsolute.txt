@@ -1,9 +1,0 @@
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\bin\Debug\netcoreapp3.1\TodayTask.Application.deps.json
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\bin\Debug\netcoreapp3.1\TodayTask.Application.dll
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\bin\Debug\netcoreapp3.1\TodayTask.Application.pdb
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.csprojAssemblyReference.cache
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.csproj.CoreCompileInputs.cache
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.AssemblyInfoInputs.cache
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.AssemblyInfo.cs
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.dll
-C:\Users\André\source\repos\TodayTask\TodayTask.Application\obj\Debug\netcoreapp3.1\TodayTask.Application.pdb
