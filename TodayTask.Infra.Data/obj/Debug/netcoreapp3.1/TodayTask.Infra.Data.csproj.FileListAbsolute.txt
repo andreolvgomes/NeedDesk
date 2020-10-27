@@ -1,0 +1,9 @@
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\bin\Debug\netcoreapp3.1\TodayTask.Infra.Data.deps.json
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\bin\Debug\netcoreapp3.1\TodayTask.Infra.Data.dll
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\bin\Debug\netcoreapp3.1\TodayTask.Infra.Data.pdb
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.AssemblyInfoInputs.cache
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.AssemblyInfo.cs
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.dll
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.pdb
+C:\Users\André\source\repos\TodayTask\TodayTask.Infra.Data\obj\Debug\netcoreapp3.1\TodayTask.Infra.Data.csprojAssemblyReference.cache
