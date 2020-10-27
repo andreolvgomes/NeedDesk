@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TodayTask.Domain.Models
+namespace NeedDesk.Domain.Models
 {
-    public class Soliteracao
+    public class Ticketiteracao
     {
         public Int64 PerfilId { get; set; }
         public Int64 SolicitacaoId { get; set; }

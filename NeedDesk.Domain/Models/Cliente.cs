@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TodayTask.Domain.Interfaces.Repositories
+namespace NeedDesk.Domain.Models
 {
-    public interface IRepository
+    class Cliente
     {
     }
 }

@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Domain", "4. Domain", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Infra", "6. Infra", "{19606983-CB28-402E-9C3D-2057FB389E23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodayTask.Application", "TodayTask.Application\TodayTask.Application.csproj", "{3861A788-BAF7-42EE-82E6-F8FA24A0B67C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Application", "NeedDesk.Application\NeedDesk.Application.csproj", "{3861A788-BAF7-42EE-82E6-F8FA24A0B67C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodayTask.Domain", "TodayTask.Domain\TodayTask.Domain.csproj", "{BF83314F-91C2-4FBC-8011-84EFAE7D7B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Domain", "NeedDesk.Domain\NeedDesk.Domain.csproj", "{BF83314F-91C2-4FBC-8011-84EFAE7D7B81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodayTask.Infra.Data", "TodayTask.Infra.Data\TodayTask.Infra.Data.csproj", "{0B36E08E-8876-412E-933C-CE691C8ABDBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.Data", "NeedDesk.Infra.Data\NeedDesk.Infra.Data.csproj", "{0B36E08E-8876-412E-933C-CE691C8ABDBF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

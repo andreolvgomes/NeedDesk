@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TodayTask.Domain.Models
+namespace NeedDesk.Domain.Models
 {
     public class UserPerfil : EntityMaster
     {

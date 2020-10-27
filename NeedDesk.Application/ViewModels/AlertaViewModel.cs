@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TodayTask.Application.ViewModels
+namespace NeedDesk.Application.ViewModels
 {
     class AlertaViewModel
     {

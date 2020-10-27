@@ -1,8 +1,8 @@
 .vs/
-TodayTask.Application/obj/
-TodayTask.Infra.Data/obj/
-TodayTask.Domain/obj/
+NeedDesk.Application/obj/
+NeedDesk.Infra.Data/obj/
+NeedDesk.Domain/obj/
 
-TodayTask.Application/bin/
-TodayTask.Infra.Data/bin/
-TodayTask.Domain/bin/
+NeedDesk.Application/bin/
+NeedDesk.Infra.Data/bin/
+NeedDesk.Domain/bin/

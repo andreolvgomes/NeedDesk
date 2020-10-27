@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TodayTask.Domain.Models
+namespace NeedDesk.Domain.Models
 {
-    class Departamento
+    class Alerta
     {
     }
 }
