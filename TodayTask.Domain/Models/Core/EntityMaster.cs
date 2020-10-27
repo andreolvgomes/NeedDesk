@@ -8,5 +8,7 @@ namespace TodayTask.Domain.Models
     {
         public Int64 Id { get; set; }
         public Guid Identifier { get; set; }
+        public DateTime CreateAt { get; set; }
+        public DateTime UpdateAt { get; set; }
     }
 }
