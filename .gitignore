@@ -1,0 +1,8 @@
+.vs/
+TodayTask.Application/obj/
+TodayTask.Infra.Data/obj/
+TodayTask.Domain/obj/
+
+TodayTask.Application/bin/
+TodayTask.Infra.Data/bin/
+TodayTask.Domain/bin/
