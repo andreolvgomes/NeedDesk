@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    public class Soliteracao
+    public class Tickethistorico
     {
         public Int64 PerfilId { get; set; }
         public Int64 SolicitacaoId { get; set; }
