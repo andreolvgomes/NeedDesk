@@ -4,7 +4,9 @@ using System.Text;
 
 namespace TodayTask.Domain.Models
 {
-    public class User
+    public class User : EntityMaster
     {
+        public string Use_email { get; set; }
+        public string Use_senha { get; set; }
     }
 }
