@@ -4,7 +4,9 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    class Departamento
+    public class Departamento : EntityMaster
     {
+        public string Dep_descricao { get; set; }
+        public bool Dep_inativo { get; set; }
     }
 }

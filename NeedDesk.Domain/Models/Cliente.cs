@@ -4,7 +4,9 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    class Cliente
+    public class Cliente : EntityMaster
     {
+        public string Cli_nome { get; set; }
+        public bool Cli_inativo { get; set; }
     }
 }

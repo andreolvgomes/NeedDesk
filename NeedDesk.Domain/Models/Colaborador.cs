@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    class UserGrupo
+    public class Colaborador
     {
     }
 }

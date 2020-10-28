@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    public class Tickethistorico
+    public class UserProfile : EntityMaster
     {
 
     }
