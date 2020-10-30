@@ -4,7 +4,8 @@ using System.Text;
 
 namespace NeedDesk.Domain.Models
 {
-    class UserGroup
+    public class Tenant : EntityBase
     {
+        public string Ten_nome { get; set; }
     }
 }
