@@ -3,7 +3,7 @@
 
 CREATE TABLE tenants (
   tenant_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -12,15 +12,15 @@ CREATE TABLE tenants (
 
 CREATE TABLE users (
   tenant_id				BIGINT,
-  user_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  use_id 				BIGINT NOT NULL AUTO_INCREMENT,
   use_email 			VARCHAR(50) NOT NULL DEFAULT '0',
   use_senha				VARCHAR(50) NOT NULL DEFAULT '',
   use_inativo			BIT NOT NULL DEFAULT 0,
-  identifier			CHAR(38),
+  identifier			CHAR(36),
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (user_id)
+  PRIMARY KEY (use_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE categorias (
@@ -28,7 +28,7 @@ CREATE TABLE categorias (
   cat_id	 				BIGINT NOT NULL AUTO_INCREMENT,
   cat_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   cat_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -40,7 +40,7 @@ CREATE TABLE classificacao (
   cla_id	 				BIGINT NOT NULL AUTO_INCREMENT,
   cla_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   cla_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -52,7 +52,7 @@ CREATE TABLE prioridades (
   pri_id	 				BIGINT NOT NULL AUTO_INCREMENT,
   pri_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   pri_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -64,7 +64,7 @@ CREATE TABLE status (
   sta_id	 				BIGINT NOT NULL AUTO_INCREMENT,
   sta_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   sta_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -76,7 +76,7 @@ CREATE TABLE departamentos (
   dep_id	 				BIGINT NOT NULL AUTO_INCREMENT,
   dep_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   dep_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -88,7 +88,7 @@ CREATE TABLE clientes (
   cli_id	 				BIGINT NOT NULL AUTO_INCREMENT,  
   cli_nome					VARCHAR(50) NOT NULL DEFAULT '',
   cli_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(38),
+  identifier				CHAR(36),
   createAt					DATETIME,
   updateAt					DATETIME,
   
@@ -103,4 +103,5 @@ ALTER TABLE clientes ADD CONSTRAINT fk_clientes_tanants FOREIGN KEY (tenant_id) 
 ALTER TABLE departamentos ADD CONSTRAINT fk_departamentos_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE prioridades ADD CONSTRAINT fk_prioridades_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE status ADD CONSTRAINT fk_status_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
 */

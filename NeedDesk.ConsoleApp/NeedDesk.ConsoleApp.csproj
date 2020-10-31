@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeedDesk.Domain\NeedDesk.Domain.csproj" />
+    <ProjectReference Include="..\NeedDesk.Infra.Data\NeedDesk.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

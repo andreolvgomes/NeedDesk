@@ -10,6 +10,11 @@ namespace NeedDesk.Infra.Data.Dapper
 {
     public class DapperConnectionMySql : IDapperDbConnection
     {
+        public DapperConnectionMySql()
+        {
+            DapperEasyCrud.SetDialect(Dialect.MySQL);
+        }
+
         public IDbConnection Connect()
         {
             return new MySqlConnection(new ConnectionStrings().ToString());

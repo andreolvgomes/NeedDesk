@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.Data", "Need
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7. Tests", "7. Tests", "{94EB6397-77CA-4BF7-83D6-1F7D36EA6D11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeedDesk.Infra.Data.Tests", "NeedDesk.Infra.Data.Tests\NeedDesk.Infra.Data.Tests.csproj", "{CA61DECD-4F71-4143-9CBD-4E39F5A124ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.Data.Tests", "NeedDesk.Infra.Data.Tests\NeedDesk.Infra.Data.Tests.csproj", "{CA61DECD-4F71-4143-9CBD-4E39F5A124ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeedDesk.ConsoleApp", "NeedDesk.ConsoleApp\NeedDesk.ConsoleApp.csproj", "{4D52448A-094E-4398-9AFF-1C5968B8694C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{CA61DECD-4F71-4143-9CBD-4E39F5A124ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA61DECD-4F71-4143-9CBD-4E39F5A124ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA61DECD-4F71-4143-9CBD-4E39F5A124ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D52448A-094E-4398-9AFF-1C5968B8694C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D52448A-094E-4398-9AFF-1C5968B8694C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D52448A-094E-4398-9AFF-1C5968B8694C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D52448A-094E-4398-9AFF-1C5968B8694C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{BF83314F-91C2-4FBC-8011-84EFAE7D7B81} = {F73FE84F-6CB5-469C-8480-CE57D7E4FA51}
 		{0B36E08E-8876-412E-933C-CE691C8ABDBF} = {19606983-CB28-402E-9C3D-2057FB389E23}
 		{CA61DECD-4F71-4143-9CBD-4E39F5A124ED} = {94EB6397-77CA-4BF7-83D6-1F7D36EA6D11}
+		{4D52448A-094E-4398-9AFF-1C5968B8694C} = {94EB6397-77CA-4BF7-83D6-1F7D36EA6D11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26FD91BC-5DEB-4A58-A8E3-5EF24EE6240F}

@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Dapper.EasyCrud">
+      <HintPath>..\Libs\Dapper.EasyCrud.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
