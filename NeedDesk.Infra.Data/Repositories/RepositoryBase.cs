@@ -12,27 +12,34 @@ namespace NeedDesk.Infra.Data.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
     {
+        protected readonly DapperFactoryDbConnection _dapperFactory;
+
+        public RepositoryBase()
+        {
+            _dapperFactory = new DapperFactoryDbConnection(new DapperConnectionMySql());
+        }
+
         public IEnumerable<TEntity> All(string conditions, object param = null, IDbTransaction transaction = null)
         {
-            using (IDbConnection cnn = new ConnectionDapper().Cnn())
+            using (IDbConnection cnn = _dapperFactory.Connect())
                 return cnn.All<TEntity>(conditions, param, transaction);
         }
 
         public int Delete(TEntity entity, IDbTransaction transaction = null)
         {
-            using (IDbConnection cnn = new ConnectionDapper().Cnn())
+            using (IDbConnection cnn = _dapperFactory.Connect())
                 return cnn.Delete<TEntity>(entity, transaction);
         }
 
         public object Insert(TEntity entity, IDbTransaction transaction = null)
         {
-            using (IDbConnection cnn = new ConnectionDapper().Cnn())
+            using (IDbConnection cnn = _dapperFactory.Connect())
                 return cnn.Insert<TEntity>(entity, transaction);
         }
 
         public int Update(TEntity entity, IDbTransaction transaction = null)
         {
-            using (IDbConnection cnn = new ConnectionDapper().Cnn())
+            using (IDbConnection cnn = _dapperFactory.Connect())
                 return cnn.Update<TEntity>(entity, transaction);
         }
     }

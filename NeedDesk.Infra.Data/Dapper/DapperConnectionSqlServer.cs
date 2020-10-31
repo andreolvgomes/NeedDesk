@@ -8,14 +8,9 @@ using System.Text;
 
 namespace NeedDesk.Infra.Data.Dapper
 {
-    public class ConnectionDapper
+    public class DapperConnectionSqlServer : IDapperDbConnection
     {
-        public ConnectionDapper()
-        {
-            DapperEasyCrud.SetDialect(Dialect.MySQL);
-        }
-
-        public IDbConnection Cnn()
+        public IDbConnection Connect()
         {
             return new MySqlConnection(new ConnectionStrings().ToString());
         }
