@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NeedDesk.Infra.Data.Dapper
 {
-    public interface IDapperConnection
+    public interface IDapperDbConnection
     {
         IDbConnection Connect();
     }

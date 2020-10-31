@@ -5,11 +5,11 @@ using System.Text;
 
 namespace NeedDesk.Infra.Data.Dapper
 {
-    public class DapperFactory: IDapperDbConnection
+    public class DapperFactoryDbConnection: IDapperDbConnection
     {
         private readonly IDapperDbConnection _dapperConnection;
 
-        public DapperFactory(IDapperDbConnection dapperConnection)
+        public DapperFactoryDbConnection(IDapperDbConnection dapperConnection)
         {
             _dapperConnection = dapperConnection;
         }
