@@ -5,15 +5,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Scripts\MySqlChangeUtf.sql" />
+    <None Remove="Scripts\MySqlTables.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Scripts\MySqlChangeUtf.sql" />
+    <Compile Include="Scripts\MySqlTables.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <PackageReference Include="Dapper" Version="2.0.35" />
+    <PackageReference Include="MySql.Data" Version="8.0.22" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeedDesk.Domain\NeedDesk.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Dapper.EasyCrud">
+      <HintPath>..\Libs\Dapper.EasyCrud.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

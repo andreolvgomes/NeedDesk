@@ -6,7 +6,8 @@ namespace NeedDesk.Domain.Models
 {
     public abstract class EntityBase
     {
-        public Int64 Id { get; set; }
+        //public Int64 Id { get; set; }
+        public Int64 Tenant_id { get; set; }
         public Guid Identifier { get; set; }
         public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; }

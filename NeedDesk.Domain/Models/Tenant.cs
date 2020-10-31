@@ -6,6 +6,5 @@ namespace NeedDesk.Domain.Models
 {
     public class Tenant : EntityBase
     {
-        public string Ten_nome { get; set; }
     }
 }
