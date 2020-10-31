@@ -9,7 +9,7 @@ namespace NeedDesk.ConsoleApp
         static void Main(string[] args)
         {
             ITenantRepository tenantRepository = new TenantRepository();
-            tenantRepository.Insert(new Domain.Models.Tenant() { Identifier = Guid.NewGuid() });
+            tenantRepository.Insert(new Domain.Models.Tenant());
         }
     }
 }

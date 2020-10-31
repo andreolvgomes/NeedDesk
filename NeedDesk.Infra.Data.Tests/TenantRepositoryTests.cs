@@ -21,7 +21,7 @@ namespace NeedDesk.Infra.Data.Tests
                 ITenantRepository tenantRepository = new TenantRepository();
 
                 // test insert
-                var id = (Int64)tenantRepository.Insert(new Tenant() { Identifier = Guid.NewGuid() });
+                var id = (Int64)tenantRepository.Insert(new Tenant() { });
                 Assert.True(id > 0);
 
                 // test get by id
@@ -37,7 +37,7 @@ namespace NeedDesk.Infra.Data.Tests
                 tenantRepository.Delete(tenant);
 
                 for (int i = 1; i <= 5; i++)
-                    tenantRepository.Insert(new Tenant() { Identifier = Guid.NewGuid() });
+                    tenantRepository.Insert(new Tenant() { });
 
                 var list = tenantRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);

@@ -19,7 +19,7 @@ namespace NeedDesk.Infra.Data.Tests
             ITenantRepository tenantRepository = new TenantRepository();
             
             // test insert
-            tenant_id_session = (Int64)tenantRepository.Insert(new Tenant() { Identifier = Guid.NewGuid() });
+            tenant_id_session = (Int64)tenantRepository.Insert(new Tenant() { });
             return tenant_id_session;
         }
     }

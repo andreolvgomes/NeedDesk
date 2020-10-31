@@ -5,9 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mapping\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeedDesk.Domain\NeedDesk.Domain.csproj" />
+    <ProjectReference Include="..\NeedDesk.Infra.Data\NeedDesk.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

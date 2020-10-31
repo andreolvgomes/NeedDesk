@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeedDesk.Application.ViewModels
 {
-    class AlertaViewModel
+    public class UserViewModel
     {
     }
 }
