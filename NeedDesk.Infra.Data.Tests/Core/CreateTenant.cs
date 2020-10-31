@@ -10,14 +10,17 @@ namespace NeedDesk.Infra.Data.Tests
 {
     public class CreateTenant
     {
+        private static Int64 tenant_id_session;
+
         public static Int64 Tenant_id()
         {
+            if (tenant_id_session > 0)
+                return tenant_id_session;
             ITenantRepository tenantRepository = new TenantRepository();
-            var list = tenantRepository.All("Tenant_id > 0");
-            if (list != null) return list.FirstOrDefault().Tenant_id;
-
+            
             // test insert
-            return (Int64)tenantRepository.Insert(new Tenant() { Identifier = Guid.NewGuid() });
+            tenant_id_session = (Int64)tenantRepository.Insert(new Tenant() { Identifier = Guid.NewGuid() });
+            return tenant_id_session;
         }
     }
 }
