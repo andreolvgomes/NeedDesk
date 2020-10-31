@@ -22,7 +22,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Status status = statusRepository.GetById(id);
+                Status status = statusRepository.FindById(id);
                 Assert.True(status != null);
 
                 // test update
@@ -50,8 +50,7 @@ namespace NeedDesk.Infra.Data.Tests
             return new Status()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Sta_descricao = Guid.NewGuid().ToString(),
-                Identifier = Guid.NewGuid()
+                Sta_descricao = Faker.Company.Name()
             };
         }
     }

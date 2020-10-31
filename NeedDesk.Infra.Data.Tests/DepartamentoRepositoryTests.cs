@@ -22,7 +22,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Departamento cliente = departamentoRepository.GetById(id);
+                Departamento cliente = departamentoRepository.FindById(id);
                 Assert.True(cliente != null);
 
                 // test update
@@ -50,8 +50,7 @@ namespace NeedDesk.Infra.Data.Tests
             return new Departamento()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Dep_descricao = Guid.NewGuid().ToString(),
-                Identifier = Guid.NewGuid()
+                Dep_descricao = Faker.Company.Name()
             };
         }
     }

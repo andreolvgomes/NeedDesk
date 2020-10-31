@@ -25,7 +25,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Tenant tenant = tenantRepository.GetById(id);
+                Tenant tenant = tenantRepository.FindById(id);
                 Assert.True(tenant != null);
 
                 // test update

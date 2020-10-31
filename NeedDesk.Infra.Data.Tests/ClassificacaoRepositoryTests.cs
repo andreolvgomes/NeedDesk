@@ -23,7 +23,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Classificacao classificacao = classificacaoRepository.GetById(id);
+                Classificacao classificacao = classificacaoRepository.FindById(id);
                 Assert.True(classificacao != null);
 
                 // test update
@@ -51,8 +51,7 @@ namespace NeedDesk.Infra.Data.Tests
             return new Classificacao()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Cla_descricao = Guid.NewGuid().ToString(),
-                Identifier = Guid.NewGuid()
+                Cla_descricao = Faker.Company.Name()
             };
         }
     }

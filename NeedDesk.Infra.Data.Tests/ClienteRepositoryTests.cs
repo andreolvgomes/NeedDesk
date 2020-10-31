@@ -22,7 +22,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Cliente cliente = clienteRepository.GetById(id);
+                Cliente cliente = clienteRepository.FindById(id);
                 Assert.True(cliente != null);
 
                 // test update
@@ -50,8 +50,7 @@ namespace NeedDesk.Infra.Data.Tests
             return new Cliente()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Cli_nome = Guid.NewGuid().ToString(),
-                Identifier = Guid.NewGuid()
+                Cli_nome = Faker.Name.FullName()
             };
         }
     }

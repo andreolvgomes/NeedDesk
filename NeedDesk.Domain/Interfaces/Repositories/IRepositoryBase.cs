@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Interfaces.Repositories
     public interface IRepositoryBase<TEntity> where TEntity : EntityBase
     {
         object Insert(TEntity entity, IDbTransaction transaction = null);
-        TEntity GetById(object id, IDbTransaction transaction = null);
+        TEntity FindById(object id, IDbTransaction transaction = null);
         int Update(TEntity entity, IDbTransaction transaction = null);
         int Delete(TEntity entity, IDbTransaction transaction = null);
         IEnumerable<TEntity> All(string conditions, object param = null, IDbTransaction transaction = null);

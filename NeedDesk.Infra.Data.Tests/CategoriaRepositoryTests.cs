@@ -23,7 +23,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                Categoria categoria = categoriaRepository.GetById(id);
+                Categoria categoria = categoriaRepository.FindById(id);
                 Assert.True(categoria != null);
 
                 // test update
@@ -51,8 +51,7 @@ namespace NeedDesk.Infra.Data.Tests
             return new Categoria()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Cat_descricao = Guid.NewGuid().ToString(),
-                Identifier = Guid.NewGuid()
+                Cat_descricao = Faker.Company.Name(),
             };
         }
     }

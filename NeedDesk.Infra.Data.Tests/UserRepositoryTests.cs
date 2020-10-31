@@ -22,7 +22,7 @@ namespace NeedDesk.Infra.Data.Tests
                 Assert.True(id > 0);
 
                 // test get by id
-                User user = userRepository.GetById(id);
+                User user = userRepository.FindById(id);
                 Assert.True(user != null);
 
                 // test update
@@ -50,9 +50,8 @@ namespace NeedDesk.Infra.Data.Tests
             return new User()
             {
                 Tenant_id = CreateTenant.Tenant_id(),
-                Use_email = "test@gmail.com",
-                Use_senha = "123456",
-                Identifier = Guid.NewGuid()
+                Use_email = Faker.Internet.Email(),
+                Use_senha = Guid.NewGuid().ToString().Substring(0, 5) + new Random().Next(0, 99999).ToString()
             };
         }
     }
