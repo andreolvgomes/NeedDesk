@@ -11,11 +11,16 @@ namespace NeedDesk.Infra.Data.Tests
     {
         private static Colaborador ColaboradorSession;
 
-        public static Colaborador Colaborador()
+        public static Colaborador Colaborador(bool ram = false)
         {
-            if (ColaboradorSession == null)
+            IColaboradorRepository colaboradorRepository = new ColaboradorRepository();
+            if (ram)
             {
-                IColaboradorRepository colaboradorRepository = new ColaboradorRepository();
+                var id = colaboradorRepository.Insert(NewColaborador());
+                return colaboradorRepository.FindById(id);
+            }
+            if (ColaboradorSession == null)
+            {                
                 var id = colaboradorRepository.Insert(NewColaborador());
                 ColaboradorSession = colaboradorRepository.FindById(id);
             }

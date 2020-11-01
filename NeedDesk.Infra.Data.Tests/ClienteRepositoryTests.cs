@@ -18,7 +18,7 @@ namespace NeedDesk.Infra.Data.Tests
                 IClienteRepository clienteRepository = new ClienteRepository();
 
                 // test insert
-                var id = (Int64)clienteRepository.Insert(NewCliente());
+                var id = (Int64)clienteRepository.Insert(CreateCliente.NewCliente());
                 Assert.True(id > 0);
 
                 // test get by id
@@ -34,7 +34,7 @@ namespace NeedDesk.Infra.Data.Tests
                 clienteRepository.Delete(cliente);
 
                 for (int i = 1; i <= 5; i++)
-                    clienteRepository.Insert(NewCliente());
+                    clienteRepository.Insert(CreateCliente.NewCliente());
 
                 var list = clienteRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);
@@ -43,15 +43,6 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }
-
-        private Cliente NewCliente()
-        {
-            return new Cliente()
-            {
-                Tenant_id = CreateTenant.Tenant_id(),
-                Cli_nome = Faker.Name.FullName()
-            };
         }
     }
 }
