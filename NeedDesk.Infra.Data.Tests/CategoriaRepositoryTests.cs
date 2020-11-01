@@ -19,7 +19,7 @@ namespace NeedDesk.Infra.Data.Tests
                 ICategoriaRepository categoriaRepository = new CategoriaRepository();
 
                 // test insert
-                var id = (Int64)categoriaRepository.Insert(NewCliente());
+                var id = (Int64)categoriaRepository.Insert(CreateCategoria.NewCategoria());
                 Assert.True(id > 0);
 
                 // test get by id
@@ -35,7 +35,7 @@ namespace NeedDesk.Infra.Data.Tests
                 categoriaRepository.Delete(categoria);
 
                 for (int i = 1; i <= 5; i++)
-                    categoriaRepository.Insert(NewCliente());
+                    categoriaRepository.Insert(CreateCategoria.NewCategoria());
 
                 var list = categoriaRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);
@@ -44,15 +44,6 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }
-
-        public Categoria NewCliente()
-        {
-            return new Categoria()
-            {
-                Tenant_id = CreateTenant.Tenant_id(),
-                Cat_descricao = Faker.Company.Name(),
-            };
         }
     }
 }

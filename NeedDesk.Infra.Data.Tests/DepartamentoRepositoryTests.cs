@@ -18,7 +18,7 @@ namespace NeedDesk.Infra.Data.Tests
                 IDepartamentoRepository departamentoRepository = new DepartamentoRepository();
 
                 // test insert
-                var id = (Int64)departamentoRepository.Insert(NewDepartamento());
+                var id = (Int64)departamentoRepository.Insert(CreateDepartamento.NewDepartamento());
                 Assert.True(id > 0);
 
                 // test get by id
@@ -34,7 +34,7 @@ namespace NeedDesk.Infra.Data.Tests
                 departamentoRepository.Delete(cliente);
 
                 for (int i = 1; i <= 5; i++)
-                    departamentoRepository.Insert(NewDepartamento());
+                    departamentoRepository.Insert(CreateDepartamento.NewDepartamento());
 
                 var list = departamentoRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);
@@ -43,15 +43,6 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }
-
-        private Departamento NewDepartamento()
-        {
-            return new Departamento()
-            {
-                Tenant_id = CreateTenant.Tenant_id(),
-                Dep_descricao = Faker.Company.Name()
-            };
         }
     }
 }

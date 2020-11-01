@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace NeedDesk.Infra.Data.Dapper
+namespace NeedDesk.Domain.Interfaces
 {
-    public interface IDapperDbConnection
+    public interface IConnectionFactory
     {
         IDbConnection Connect();
     }

@@ -19,7 +19,7 @@ namespace NeedDesk.Infra.Data.Tests
                 IClassificacaoRepository classificacaoRepository = new ClassificacaoRepository();
 
                 // test insert
-                var id = (Int64)classificacaoRepository.Insert(NewClassificacao());
+                var id = (Int64)classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());
                 Assert.True(id > 0);
 
                 // test get by id
@@ -35,7 +35,7 @@ namespace NeedDesk.Infra.Data.Tests
                 classificacaoRepository.Delete(classificacao);
 
                 for (int i = 1; i <= 5; i++)
-                    classificacaoRepository.Insert(NewClassificacao());
+                    classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());
 
                 var list = classificacaoRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);
@@ -44,15 +44,6 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }
-
-        private Classificacao NewClassificacao()
-        {
-            return new Classificacao()
-            {
-                Tenant_id = CreateTenant.Tenant_id(),
-                Cla_descricao = Faker.Company.Name()
-            };
         }
     }
 }

@@ -18,7 +18,7 @@ namespace NeedDesk.Infra.Data.Tests
                 IUserRepository userRepository = new UserRepository();
 
                 // test insert
-                var id = (Int64)userRepository.Insert(NewClassificacao());
+                var id = (Int64)userRepository.Insert(CreateUser.NewUser());
                 Assert.True(id > 0);
 
                 // test get by id
@@ -34,7 +34,7 @@ namespace NeedDesk.Infra.Data.Tests
                 userRepository.Delete(user);
 
                 for (int i = 1; i <= 5; i++)
-                    userRepository.Insert(NewClassificacao());
+                    userRepository.Insert(CreateUser.NewUser());
 
                 var list = userRepository.All("tenant_id > 0");
                 Assert.True(list.Count() > 0);
@@ -43,16 +43,6 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }
-
-        private User NewClassificacao()
-        {
-            return new User()
-            {
-                Tenant_id = CreateTenant.Tenant_id(),
-                Use_email = Faker.Internet.Email(),
-                Use_senha = Guid.NewGuid().ToString().Substring(0, 5) + new Random().Next(0, 99999).ToString()
-            };
-        }
+        }        
     }
 }

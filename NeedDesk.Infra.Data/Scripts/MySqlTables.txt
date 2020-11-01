@@ -1,6 +1,9 @@
 ﻿/*
--- TABELAS CADATROS
+DROP DATABASE IF EXISTS need;
+CREATE DATABASE need;
+USE need;
 
+-- TABELAS CADATROS
 CREATE TABLE tenants (
   tenant_id 				BIGINT NOT NULL AUTO_INCREMENT,
   identifier				CHAR(36),
@@ -95,6 +98,59 @@ CREATE TABLE clientes (
   PRIMARY KEY (cli_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE colaboradores (
+  tenant_id				BIGINT,
+  col_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  use_id				BIGINT,
+  col_nome				VARCHAR(50) NOT NULL DEFAULT '',
+  Col_sobrenome			VARCHAR(50) NOT NULL DEFAULT '',
+  col_inativo			BIT NOT NULL DEFAULT 0,
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (col_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE departamentos_categorias (
+  tenant_id				BIGINT,
+  dec_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  dep_id				BIGINT,
+  cat_id				BIGINT,  
+  
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (dec_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE categorias_classificacao (
+  tenant_id				BIGINT,
+  cal_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  cat_id				BIGINT,
+  cla_id				BIGINT,
+  
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (cal_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE departamentos_status (
+  tenant_id				BIGINT,
+  des_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  dep_id				BIGINT,
+  sta_id				BIGINT,
+  
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (des_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- CREATE FK
 ALTER TABLE users ADD CONSTRAINT fk_users_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE categorias ADD CONSTRAINT fk_categorias_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
@@ -103,5 +159,25 @@ ALTER TABLE clientes ADD CONSTRAINT fk_clientes_tanants FOREIGN KEY (tenant_id) 
 ALTER TABLE departamentos ADD CONSTRAINT fk_departamentos_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE prioridades ADD CONSTRAINT fk_prioridades_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE status ADD CONSTRAINT fk_status_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+
+-- colaboradores
+ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_users FOREIGN KEY (Use_id) REFERENCES users(Use_id);
+
+-- departamentos_categorias
+ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
+ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
+
+-- categorias_classificacao
+ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
+ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_classificacao FOREIGN KEY (cla_id) REFERENCES classificacao(cla_id);
+
+-- departamentos_status
+ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
+ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_status FOREIGN KEY (sta_id) REFERENCES status(sta_id);
+
 
 */
