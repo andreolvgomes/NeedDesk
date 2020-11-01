@@ -151,6 +151,19 @@ CREATE TABLE departamentos_status (
   PRIMARY KEY (des_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE departamentos_colaboradores (
+  tenant_id				BIGINT,
+  dec_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  dep_id				BIGINT,
+  col_id				BIGINT,
+  
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (dec_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE tickets (
   tenant_id				BIGINT,
   tic_id 				BIGINT NOT NULL AUTO_INCREMENT,
@@ -209,4 +222,9 @@ ALTER TABLE tickets ADD CONSTRAINT fk_prioridades FOREIGN KEY (pri_id) REFERENCE
 ALTER TABLE tickets ADD CONSTRAINT fk_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
 ALTER TABLE tickets ADD CONSTRAINT fk_classificacao FOREIGN KEY (cla_id) REFERENCES classificacao(cla_id);
 ALTER TABLE tickets ADD CONSTRAINT fk_status FOREIGN KEY (sta_id) REFERENCES status(sta_id);
+
+-- departamentos_colaboradores
+ALTER TABLE departamentos_colaboradores ADD CONSTRAINT fk_departamentos_colaboradores_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos_colaboradores ADD CONSTRAINT fk_departamentos_colaboradores_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
+ALTER TABLE departamentos_colaboradores ADD CONSTRAINT fk_departamentos_colaboradores_colaboradores FOREIGN KEY (col_id) REFERENCES colaboradores(col_id);
 */
