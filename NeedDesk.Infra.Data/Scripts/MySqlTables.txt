@@ -151,6 +151,27 @@ CREATE TABLE departamentos_status (
   PRIMARY KEY (des_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE tickets (
+  tenant_id				BIGINT,
+  tic_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  dep_id				BIGINT,
+  cli_id				BIGINT,
+  col_id_soli			BIGINT,
+  col_id_pend			BIGINT,
+  pri_id				BIGINT,
+  cat_id				BIGINT,
+  cla_id				BIGINT,
+  sta_id				BIGINT,
+  tick_assunto			VARCHAR(100) NOT NULL DEFAULT '',
+  tick_tipo				INT NOT NULL DEFAULT 0,
+  
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (tic_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- CREATE FK
 ALTER TABLE users ADD CONSTRAINT fk_users_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE categorias ADD CONSTRAINT fk_categorias_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
@@ -179,5 +200,13 @@ ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_tanants 
 ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
 ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_status FOREIGN KEY (sta_id) REFERENCES status(sta_id);
 
-
+-- tickts
+ALTER TABLE tickets ADD CONSTRAINT fk_tickets_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_tickets_clientes FOREIGN KEY (cli_id) REFERENCES clientes(cli_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_tickets_colaboradores_soli FOREIGN KEY (col_id_soli) REFERENCES colaboradores(col_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_tickets_colaboradores_pend FOREIGN KEY (col_id_pend) REFERENCES colaboradores(col_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_prioridades FOREIGN KEY (pri_id) REFERENCES prioridades(pri_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_classificacao FOREIGN KEY (cla_id) REFERENCES classificacao(cla_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_status FOREIGN KEY (sta_id) REFERENCES status(sta_id);
 */
