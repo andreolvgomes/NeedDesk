@@ -8,8 +8,8 @@ namespace NeedDesk.ConsoleApp
     {
         static void Main(string[] args)
         {
-            ITenantRepository tenantRepository = new TenantRepository();
-            tenantRepository.Insert(new Domain.Models.Tenant());
+            //ITenantRepository tenantRepository = new TenantRepository();
+            //tenantRepository.Insert(new Domain.Models.Tenant());
         }
     }
 }

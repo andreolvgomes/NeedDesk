@@ -4,9 +4,11 @@ NeedDesk.Infra.Data/obj/
 NeedDesk.Domain/obj/
 NeedDesk.Infra.Data.Tests/obj/
 NeedDesk.ConsoleApp/obj/
+NeedDesk.Infra.IoC/obj/
 
 NeedDesk.Application/bin/
 NeedDesk.Infra.Data/bin/
 NeedDesk.Domain/bin/
 NeedDesk.Infra.Data.Tests/bin/
 NeedDesk.ConsoleApp/bin/
+NeedDesk.Infra.IoC/bin/

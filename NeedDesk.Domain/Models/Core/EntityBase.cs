@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace NeedDesk.Domain.Models
@@ -17,5 +19,15 @@ namespace NeedDesk.Domain.Models
 
         [UpdateAt]
         public DateTime UpdateAt { get; set; }
+
+        public EntityBase()
+        {
+            // set value default property string
+            foreach (PropertyInfo pro in this.GetType().GetProperties().Where(c => c.CanWrite))
+            {
+                if (pro.PropertyType == typeof(string))
+                    pro.SetValue(this, string.Empty);
+            }
+        }
     }
 }

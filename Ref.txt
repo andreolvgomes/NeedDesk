@@ -1,3 +1,15 @@
 http://tomticket.com.br/
 https://monday.com/lang/pt/
 https://desktime.com/
+
+https://app.helpdesk.com/tickets/all
+139657243@tickets.helpdesk.com
+
+.NET Solution Structure of an Enterprise Application
+http://www.taimila.com/blog/.net-solution-structure-of-an-enterprise-application/
+
+CQRS
+https://codewithshadman.com/cqrs/
+
+Boriszn / DeviceManager.Api
+https://github.com/Boriszn/DeviceManager.Api
