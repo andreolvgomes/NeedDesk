@@ -16,7 +16,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IPrioridadeRepository prioridadeRepository = new PrioridadeRepository();
+                IPrioridadeRepository prioridadeRepository = new PrioridadeRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)prioridadeRepository.Insert(CreatePrioridade.NewPrioridade());

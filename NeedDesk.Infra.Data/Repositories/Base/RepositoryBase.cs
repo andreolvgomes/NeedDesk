@@ -15,10 +15,11 @@ namespace NeedDesk.Infra.Data.Repositories
     {
         protected readonly IConnectionFactory _connectionFactory;
 
-        public RepositoryBase()
+        public RepositoryBase(IConnectionFactory connectionFactory)
         {
+            _connectionFactory = connectionFactory;
             //_connectionFactory = new ConnectionSqlServer();
-            _connectionFactory = new ConnectionMySql();
+            //_connectionFactory = new ConnectionMySql();
         }
 
         public IEnumerable<TEntity> All(string conditions, object param = null, IDbTransaction transaction = null)

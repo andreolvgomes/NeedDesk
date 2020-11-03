@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IStatusRepository statusRepository = new StatusRepository();
+                IStatusRepository statusRepository = new StatusRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)statusRepository.Insert(CreateStatus.NewStatus());

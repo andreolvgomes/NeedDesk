@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IClienteRepository clienteRepository = new ClienteRepository();
+                IClienteRepository clienteRepository = new ClienteRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)clienteRepository.Insert(CreateCliente.NewCliente());

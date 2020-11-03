@@ -13,7 +13,7 @@ namespace NeedDesk.Infra.Data.Tests
 
         public static Colaborador Colaborador(bool ram = false)
         {
-            IColaboradorRepository colaboradorRepository = new ColaboradorRepository();
+            IColaboradorRepository colaboradorRepository = new ColaboradorRepository(Test.Connect);
             if (ram)
             {
                 var id = colaboradorRepository.Insert(NewColaborador());

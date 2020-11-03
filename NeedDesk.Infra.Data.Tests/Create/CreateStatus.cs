@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (StatusSession == null)
             {
-                IStatusRepository statusRepository = new StatusRepository();
+                IStatusRepository statusRepository = new StatusRepository(Test.Connect);
                 var id = statusRepository.Insert(NewStatus());
                 StatusSession = statusRepository.FindById(id);
             }

@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                ICategoriaClassificacaoRepository categoriaClassificacaoRepository = new CategoriaClassificacaoRepository();
+                ICategoriaClassificacaoRepository categoriaClassificacaoRepository = new CategoriaClassificacaoRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)categoriaClassificacaoRepository.Insert(NewDepartamentoCategoria());

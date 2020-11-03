@@ -18,7 +18,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                ITenantRepository tenantRepository = new TenantRepository();
+                ITenantRepository tenantRepository = new TenantRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)tenantRepository.Insert(new Tenant() { });

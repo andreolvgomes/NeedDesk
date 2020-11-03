@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (TicketSession == null)
             {
-                ITicketRepository ticketRepository = new TicketRepository();
+                ITicketRepository ticketRepository = new TicketRepository(Test.Connect);
                 var id = ticketRepository.Insert(NewTicket());
                 TicketSession = ticketRepository.FindById(id);
             }

@@ -16,7 +16,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (tenant_id_session > 0)
                 return tenant_id_session;
-            ITenantRepository tenantRepository = new TenantRepository();
+            ITenantRepository tenantRepository = new TenantRepository(Test.Connect);
             
             // test insert
             tenant_id_session = (Int64)tenantRepository.Insert(new Tenant() { });

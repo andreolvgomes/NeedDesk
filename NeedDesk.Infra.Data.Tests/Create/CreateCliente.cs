@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (ClienteSession == null)
             {
-                IClienteRepository clienteRepository = new ClienteRepository();
+                IClienteRepository clienteRepository = new ClienteRepository(Test.Connect);
                 var id = clienteRepository.Insert(NewCliente());
                 ClienteSession = clienteRepository.FindById(id);
             }

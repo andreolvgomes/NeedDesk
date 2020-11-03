@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (ClassificacaoSession == null)
             {
-                IClassificacaoRepository categoriaClassificacaoRepository = new ClassificacaoRepository();
+                IClassificacaoRepository categoriaClassificacaoRepository = new ClassificacaoRepository(Test.Connect);
                 var id = categoriaClassificacaoRepository.Insert(NewClassificacao());
                 ClassificacaoSession = categoriaClassificacaoRepository.FindById(id);
             }

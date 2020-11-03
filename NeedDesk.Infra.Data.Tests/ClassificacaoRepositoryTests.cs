@@ -16,7 +16,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IClassificacaoRepository classificacaoRepository = new ClassificacaoRepository();
+                IClassificacaoRepository classificacaoRepository = new ClassificacaoRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());

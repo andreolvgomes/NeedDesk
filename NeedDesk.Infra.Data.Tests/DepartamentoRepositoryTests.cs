@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IDepartamentoRepository departamentoRepository = new DepartamentoRepository();
+                IDepartamentoRepository departamentoRepository = new DepartamentoRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)departamentoRepository.Insert(CreateDepartamento.NewDepartamento());

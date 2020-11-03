@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                ITicketRepository ticketRepository = new TicketRepository();
+                ITicketRepository ticketRepository = new TicketRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)ticketRepository.Insert(CreateTicket.NewTicket());

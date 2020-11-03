@@ -9,5 +9,9 @@ namespace NeedDesk.Infra.Data.Repositories
 {
     public class PrioridadeRepository : RepositoryBase<Prioridade>, IPrioridadeRepository
     {
+        public PrioridadeRepository(IConnectionFactory connectionFactory)
+            : base(connectionFactory)
+        {
+        }
     }
 }

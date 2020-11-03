@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             try
             {
-                IColaboradorRepository colaboradorRepository = new ColaboradorRepository();
+                IColaboradorRepository colaboradorRepository = new ColaboradorRepository(Test.Connect);
 
                 // test insert
                 var id = (Int64)colaboradorRepository.Insert(CreateColaborador.NewColaborador());

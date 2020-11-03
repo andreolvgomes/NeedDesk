@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (PrioridadeSession == null)
             {
-                IPrioridadeRepository prioridadeRepository = new PrioridadeRepository();
+                IPrioridadeRepository prioridadeRepository = new PrioridadeRepository(Test.Connect);
                 var id = prioridadeRepository.Insert(NewPrioridade());
                 PrioridadeSession = prioridadeRepository.FindById(id);
             }

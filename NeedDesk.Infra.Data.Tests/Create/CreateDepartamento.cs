@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (DepartamentoSession == null)
             {
-                IDepartamentoRepository departamentoRepository = new DepartamentoRepository();
+                IDepartamentoRepository departamentoRepository = new DepartamentoRepository(Test.Connect);
                 var id = departamentoRepository.Insert(NewDepartamento());
                 DepartamentoSession = departamentoRepository.FindById(id);
             }

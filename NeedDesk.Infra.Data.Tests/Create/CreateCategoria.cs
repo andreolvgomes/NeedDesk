@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (CategoriaSession == null)
             {
-                ICategoriaRepository categoriaRepository = new CategoriaRepository();
+                ICategoriaRepository categoriaRepository = new CategoriaRepository(Test.Connect);
                 var id = categoriaRepository.Insert(NewCategoria());
                 CategoriaSession = categoriaRepository.FindById(id);
             }

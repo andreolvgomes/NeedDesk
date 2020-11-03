@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Tests
         {
             if (UserSession != null)
                 return UserSession;
-            IUserRepository userRepository = new UserRepository();
+            IUserRepository userRepository = new UserRepository(Test.Connect);
 
             // test insert
             var id = (Int64)userRepository.Insert(NewUser());
