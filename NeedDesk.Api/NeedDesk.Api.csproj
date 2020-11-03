@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NeedDesk.Application\NeedDesk.Application.csproj" />
+    <ProjectReference Include="..\NeedDesk.Infra.IoC\NeedDesk.Infra.IoC.csproj" />
+  </ItemGroup>
+
+
+</Project>
