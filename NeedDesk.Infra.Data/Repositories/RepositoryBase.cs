@@ -17,6 +17,7 @@ namespace NeedDesk.Infra.Data.Repositories
 
         public RepositoryBase()
         {
+            //_connectionFactory = new ConnectionSqlServer();
             _connectionFactory = new ConnectionMySql();
         }
 
