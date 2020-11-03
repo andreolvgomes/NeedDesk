@@ -175,7 +175,7 @@ CREATE TABLE tickets (
   cat_id				BIGINT,
   cla_id				BIGINT,
   sta_id				BIGINT,
-  tick_assunto			VARCHAR(100) NOT NULL DEFAULT '',
+  tick_assunto			VARCHAR(250) NOT NULL DEFAULT '',
   tick_tipo				INT NOT NULL DEFAULT 0,
   
   identifier			CHAR(36),
@@ -183,6 +183,19 @@ CREATE TABLE tickets (
   updateAt				DATETIME,
   
   PRIMARY KEY (tic_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE ticket_andamentos (
+  tenant_id				BIGINT,
+  and_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  tic_id				BIGINT,
+  and_texto				TEXT,
+
+  identifier			CHAR(36),
+  createAt				DATETIME,
+  updateAt				DATETIME,
+  
+  PRIMARY KEY (and_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- CREATE FK
@@ -197,6 +210,10 @@ ALTER TABLE status ADD CONSTRAINT fk_status_tanants FOREIGN KEY (tenant_id) REFE
 -- colaboradores
 ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_users FOREIGN KEY (Use_id) REFERENCES users(Use_id);
+
+-- ticket_andamentos
+ALTER TABLE ticket_andamentos ADD CONSTRAINT fk_ticket_andamentos_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE ticket_andamentos ADD CONSTRAINT fk_ticket_andamentos_tickets FOREIGN KEY (tic_id) REFERENCES tickets(tic_id);
 
 -- departamentos_categorias
 ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_tanants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
