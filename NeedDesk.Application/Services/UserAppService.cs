@@ -31,9 +31,14 @@ namespace NeedDesk.Application.Services
             return _userRepository.FindById(use_id);
         }
 
-        public void Remove(User user)
+        public void Remove(object id)
         {
-            _userRepository.Delete(user);
+            _userRepository.Delete(id);
+        }
+
+        public void Update(User user)
+        {
+            _userRepository.Update(user);
         }
     }
 }

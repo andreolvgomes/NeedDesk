@@ -12,6 +12,7 @@ namespace NeedDesk.Domain.Interfaces.Repositories
         TEntity FindById(object id, IDbTransaction transaction = null);
         int Update(TEntity entity, IDbTransaction transaction = null);
         int Delete(TEntity entity, IDbTransaction transaction = null);
+        int Delete(object id, IDbTransaction transaction = null);
         IEnumerable<TEntity> All(string conditions, object param = null, IDbTransaction transaction = null);
     }
 }

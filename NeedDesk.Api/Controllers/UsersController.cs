@@ -65,9 +65,43 @@ namespace NeedDesk.Api.Controllers
             {
                 var result = _userAppService.Create(user);
                 if (result > 0)
-                    return Created(new Uri(Url.Link("GetWithId", new { id = result })), result);
+                    return Created(new Uri(Url.Link("GetWithId", new { id = result })), _userAppService.Get(result));
 
                 return BadRequest(ModelState);
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public ActionResult Put([FromBody] User user)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                _userAppService.Update(user);
+                return Ok(new { success = true });
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(Int64 id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                _userAppService.Remove(id);
+                return Ok(new { success = true });
             }
             catch (ArgumentException ex)
             {

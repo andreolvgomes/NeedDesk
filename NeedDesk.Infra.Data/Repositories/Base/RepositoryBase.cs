@@ -34,6 +34,12 @@ namespace NeedDesk.Infra.Data.Repositories
                 return cnn.Delete<TEntity>(entity, transaction);
         }
 
+        public int Delete(object id, IDbTransaction transaction = null)
+        {
+            using (IDbConnection cnn = _connectionFactory.Connect())
+                return cnn.Delete<TEntity>(id, transaction);
+        }
+
         public TEntity FindById(object id, IDbTransaction transaction = null)
         {
             using (IDbConnection cnn = _connectionFactory.Connect())
