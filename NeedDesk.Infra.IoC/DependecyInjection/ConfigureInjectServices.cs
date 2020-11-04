@@ -14,6 +14,7 @@ namespace NeedDesk.Infra.IoC.DependecyInjection
         public static void Configure(IServiceCollection services)
         {
             services.AddTransient<IUserAppService, UserAppService>();
+            services.AddTransient<ILoginAppService, LoginAppService>();
         }
     }
 }

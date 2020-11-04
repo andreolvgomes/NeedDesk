@@ -7,5 +7,6 @@ namespace NeedDesk.Domain.Interfaces.Repositories
 {
     public interface IUserRepository : IRepositoryBase<User>
     {
+        User FindByLogin(string email);
     }
 }

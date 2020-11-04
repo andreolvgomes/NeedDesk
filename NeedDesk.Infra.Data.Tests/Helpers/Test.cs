@@ -12,7 +12,8 @@ namespace NeedDesk.Infra.Data.Tests
         {
             get
             {
-                return new ConnectionSqlServer();
+                //return new ConnectionSqlServer();
+                return new ConnectionMySql();
             }
         }
     }

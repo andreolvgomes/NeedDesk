@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NeedDesk.Application.Mapping;
 using NeedDesk.Infra.IoC.DependecyInjection;
 
 namespace NeedDesk.Api
@@ -27,7 +29,8 @@ namespace NeedDesk.Api
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureInjectServices.Configure(services);
-            ConfigureInjetctRepositories.Configure(services);
+            ConfigureInjetctRepositories.Configure(services);            
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

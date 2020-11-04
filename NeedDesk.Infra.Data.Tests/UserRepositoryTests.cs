@@ -43,6 +43,24 @@ namespace NeedDesk.Infra.Data.Tests
             {
                 throw;
             }
-        }        
+        }
+
+        [Fact]
+        public void ShouldFindByLogin()
+        {
+            try
+            {
+                IUserRepository userRepository = new UserRepository(Test.Connect);
+
+                var user = CreateUser.NewUser();
+                userRepository.Insert(user);
+                var login = userRepository.FindByLogin(user.Use_email);
+                Assert.True(login != null);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
