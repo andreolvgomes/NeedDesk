@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NeedDesk.Application.Dtos.User;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Models;
 
@@ -21,6 +23,7 @@ namespace NeedDesk.Api.Controllers
             _userAppService = userAppService;
         }
 
+        //[Authorize("Bearer")]
         [HttpGet]
         public ActionResult GetAll()
         {
@@ -56,7 +59,7 @@ namespace NeedDesk.Api.Controllers
 
 
         [HttpPost]
-        public ActionResult Post([FromBody] User user)
+        public ActionResult Post([FromBody] UserCreateDto user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -76,7 +79,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] User user)
+        public ActionResult Put([FromBody] UserUpdateDto user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

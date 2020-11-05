@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NeedDesk.Infra.IoC.DependecyInjection
+namespace NeedDesk.Infra.CrossCutting.DependecyInjection
 {
     public class ConfigureInjectServices
     {

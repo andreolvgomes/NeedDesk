@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NeedDesk.Application.Mapping
+namespace NeedDesk.Infra.CrossCutting.AutoMapper.Mapping
 {
     public class ModelToViewModelMapping : Profile
     {

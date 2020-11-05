@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.Data.Tests",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.ConsoleApp", "NeedDesk.ConsoleApp\NeedDesk.ConsoleApp.csproj", "{4D52448A-094E-4398-9AFF-1C5968B8694C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.IoC", "NeedDesk.Infra.IoC\NeedDesk.Infra.IoC.csproj", "{6FB9DECA-19E0-4358-930A-2D5B4EC2495B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.CrossCutting", "NeedDesk.Infra.CrossCutting\NeedDesk.Infra.CrossCutting.csproj", "{6FB9DECA-19E0-4358-930A-2D5B4EC2495B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeedDesk.Api", "NeedDesk.Api\NeedDesk.Api.csproj", "{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Api", "NeedDesk.Api\NeedDesk.Api.csproj", "{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

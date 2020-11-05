@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NeedDesk.Application\NeedDesk.Application.csproj" />
-    <ProjectReference Include="..\NeedDesk.Infra.IoC\NeedDesk.Infra.IoC.csproj" />
+    <ProjectReference Include="..\NeedDesk.Infra.CrossCutting\NeedDesk.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
 

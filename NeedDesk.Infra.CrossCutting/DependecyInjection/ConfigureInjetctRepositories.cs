@@ -4,7 +4,7 @@ using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Infra.Data.Dapper;
 using NeedDesk.Infra.Data.Repositories;
 
-namespace NeedDesk.Infra.IoC.DependecyInjection
+namespace NeedDesk.Infra.CrossCutting.DependecyInjection
 {
     public class ConfigureInjetctRepositories
     {
