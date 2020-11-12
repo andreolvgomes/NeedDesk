@@ -35,6 +35,11 @@ namespace NeedDesk.Application.Services
             return _mapper.Map<CategoriaResult>(_categoriaRepository.FindById(cat_id));
         }
 
+        public bool Inativar(long cat_id)
+        {
+            return _categoriaRepository.Inativar(cat_id);
+        }
+
         public void Remove(long cat_id)
         {
             _categoriaRepository.Delete(_categoriaRepository.FindById(cat_id));

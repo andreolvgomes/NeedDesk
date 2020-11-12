@@ -107,5 +107,24 @@ namespace NeedDesk.Api.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPut("{id}")]
+        public ActionResult Inativar(Int64 id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                bool success = _categoriaAppService.Inativar(id);
+                if (success == false)
+                    return NotFound();
+                return Ok(new { success = true });
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

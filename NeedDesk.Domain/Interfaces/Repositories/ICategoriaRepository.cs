@@ -7,5 +7,6 @@ namespace NeedDesk.Domain.Interfaces.Repositories
 {
     public interface ICategoriaRepository : IRepositoryBase<Categoria>
     {
+        bool Inativar(Int64 cat_id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using NeedDesk.Domain.Interfaces;
+﻿using Dapper;
+using NeedDesk.Domain.Interfaces;
 using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Domain.Models;
 using System;
@@ -12,6 +13,15 @@ namespace NeedDesk.Infra.Data.Repositories
         public CategoriaRepository(IConnectionFactory connectionFactory)
             : base(connectionFactory)
         {
+        }
+
+        public bool Inativar(long cat_id)
+        {
+            int rowseffected = _connectionFactory.Connect()
+                .Execute("update Categorias set Cat_inativo = 1 where cat_id = @cat_id",
+                new { cat_id });
+
+            return rowseffected > 0;
         }
     }
 }
