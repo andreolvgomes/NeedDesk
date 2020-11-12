@@ -11,7 +11,7 @@ using System.Text;
 
 namespace NeedDesk.Infra.Data.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase
+    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : IEntity
     {
         protected readonly IConnectionFactory _connectionFactory;
 

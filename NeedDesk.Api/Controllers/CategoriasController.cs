@@ -1,23 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeedDesk.Application.DTO.User;
+using NeedDesk.Application.DTO.Categoria;
 using NeedDesk.Application.Interfaces;
 
 namespace NeedDesk.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class CategoriasController : ControllerBase
     {
-        private readonly IUserAppService _userAppService;
+        private readonly ICategoriaAppService _categoriaAppService;
 
-        public UsersController(IUserAppService userAppService)
+        public CategoriasController(ICategoriaAppService categoriaAppService)
         {
-            _userAppService = userAppService;
+            _categoriaAppService = categoriaAppService;
         }
 
-        //[Authorize("Bearer")]
         [HttpGet]
         public ActionResult GetAll()
         {
@@ -26,7 +29,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_userAppService.All());
+                return Ok(_categoriaAppService.All());
             }
             catch (ArgumentException ex)
             {
@@ -35,7 +38,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route("{id}", Name = "GetWithCat_id")]
         public ActionResult Get(Int64 id)
         {
             if (!ModelState.IsValid)
@@ -43,7 +46,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_userAppService.Get(id));
+                return Ok(_categoriaAppService.Get(id));
             }
             catch (ArgumentException ex)
             {
@@ -52,16 +55,16 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] UserCreateDto user)
+        public ActionResult Post([FromBody] CategoriaCreate categoriaCreate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                var result = _userAppService.Create(user);
+                var result = _categoriaAppService.Create(categoriaCreate);
                 if (result > 0)
-                    return Created(new Uri(Url.Link("GetWithId", new { id = result })), _userAppService.Get(result));
+                    return Created(new Uri(Url.Link("GetWithCat_id", new { id = result })), _categoriaAppService.Get(result));
 
                 return BadRequest(ModelState);
             }
@@ -72,14 +75,14 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] UserUpdateDto user)
+        public ActionResult Put([FromBody] CategoriaUpdate categoriaUpdate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                _userAppService.Update(user);
+                _categoriaAppService.Update(categoriaUpdate);
                 return Ok(new { success = true });
             }
             catch (ArgumentException ex)
@@ -96,7 +99,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                _userAppService.Remove(id);
+                _categoriaAppService.Remove(id);
                 return Ok(new { success = true });
             }
             catch (ArgumentException ex)

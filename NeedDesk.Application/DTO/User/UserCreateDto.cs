@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace NeedDesk.Application.Dtos.User
+namespace NeedDesk.Application.DTO.User
 {
     public class UserCreateDto
     {
@@ -11,5 +11,9 @@ namespace NeedDesk.Application.Dtos.User
         [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]
         [StringLength(50, ErrorMessage = "Email deve ter no máximo {1} caracteres.")]
         public string Use_email { get; set; }
+
+        [Required(ErrorMessage = "Senha é um campo obrigatório")]
+        [StringLength(50, ErrorMessage = "Senha deve ter no máximo {1} caracteres.")]
+        public string Use_senha { get; set; }
     }
 }

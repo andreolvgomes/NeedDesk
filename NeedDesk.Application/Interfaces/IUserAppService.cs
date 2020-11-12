@@ -1,5 +1,5 @@
-﻿using NeedDesk.Application.Dtos.User;
-using NeedDesk.Application.Dtos.Users;
+﻿using NeedDesk.Application.DTO.User;
+using NeedDesk.Application.DTO.Users;
 using NeedDesk.Domain.Models;
 using System;
 using System.Collections.Generic;

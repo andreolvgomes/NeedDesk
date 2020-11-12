@@ -6,9 +6,8 @@ using System.Text;
 namespace NeedDesk.Domain.Models
 {
     [Table("Departamentos_Categorias")]
-    public class DepartamentoCategoria : EntityBase
+    public class DepartamentoCategoria : EntityBase, IEntity
     {
-        public Int64 Tenant_id { get; set; }
         [Key]
         public Int64 Dec_id { get; set; }
         public Int64 Dep_id { get; set; }

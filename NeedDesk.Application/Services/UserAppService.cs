@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using NeedDesk.Application.Dtos.User;
-using NeedDesk.Application.Dtos.Users;
+using NeedDesk.Application.DTO.User;
+using NeedDesk.Application.DTO.Users;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Domain.Models;

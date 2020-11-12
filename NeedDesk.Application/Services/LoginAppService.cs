@@ -2,7 +2,7 @@
 using AutoMapper.Configuration;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
-using NeedDesk.Application.Dtos.Users;
+using NeedDesk.Application.DTO.Users;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Domain.Models;
@@ -12,10 +12,29 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using Ubiety.Dns.Core.Records;
 
 namespace NeedDesk.Application.Services
 {
+    public class LoginValid
+    {
+        public bool Success
+        {
+            get
+            {
+                return Message.NullOrEmpty();
+            }
+        }
+
+        public string Message { get; set; }
+
+        public LoginValid(string message = "")
+        {
+            Message = message;
+        }
+    }
+
     public class LoginAppService : ILoginAppService
     {
         private readonly IUserRepository _userRepository;
@@ -36,37 +55,26 @@ namespace NeedDesk.Application.Services
 
         public object FindByLogin(LoginDto login)
         {
-            if (login != null && !login.Use_email.NullOrEmpty())
-            {
-                User user = _userRepository.FindByLogin(login.Use_email);
-                if (user != null)
+            User user = _userRepository.FindByLogin(login.Use_email);
+            if (user == null)
+                return new LoginValid("Usuário ou senha inválido(1)");
+            
+            if (!user.Use_senha.Equals(login.Use_senha))
+                return new LoginValid("Usuário ou senha inválido(2)");
+
+            ClaimsIdentity identity = new ClaimsIdentity(
+                new GenericIdentity(user.Use_email),
+                new[]
                 {
-                    ClaimsIdentity identity = new ClaimsIdentity(
-                        new GenericIdentity(user.Use_email),
-                        new[]
-                        {
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                             new Claim(JwtRegisteredClaimNames.UniqueName, user.Use_email),
-                         });
+                 });
 
-                    DateTime create_date = DateTime.Now;
-                    DateTime expiration = create_date + TimeSpan.FromSeconds(_tokenConfigurations.Seconds);
+            DateTime current = DateTime.Now;
+            DateTime expiration = current + TimeSpan.FromSeconds(_tokenConfigurations.Seconds);
 
-                    string token = CreateToken(identity, create_date, expiration);
-                    return SuccessObject(create_date, expiration, token, user);
-                }
-            }
-
-            return new
-            {
-                Authenticated = false,
-                Message = "Falha na autenticação"
-            };
-
-            //if (login != null && !login.Email.NullOrEmpty())
-            //    return _userRepository.FindByLogin(login.Email);
-            //return null;
-        }
+            return Successful(user.Tenant_id, current, expiration, CreateToken(identity, current, expiration), user);
+        }        
 
         private string CreateToken(ClaimsIdentity identity, DateTime createDate, DateTime expiration)
         {
@@ -85,11 +93,12 @@ namespace NeedDesk.Application.Services
             return handler.WriteToken(securityToken);
         }
 
-        private object SuccessObject(DateTime createDate, DateTime expiration, string token, User user)
+        private object Successful(Int64 tenant, DateTime createDate, DateTime expiration, string token, User user)
         {
             return new
             {
                 Authenticated = true,
+                Tenant = tenant,
                 Created = createDate.ToString("yyyy-MM-dd HH:mm:ss"),
                 Expiration = expiration.ToString("yyyy-MM-dd HH:mm:ss"),
                 AcessToken = token,

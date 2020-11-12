@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NeedDesk.Domain.Interfaces.Repositories
 {
-    public interface IRepositoryBase<TEntity> where TEntity : EntityBase
+    public interface IRepositoryBase<TEntity> where TEntity : IEntity
     {
         object Insert(TEntity entity, IDbTransaction transaction = null);
         TEntity FindById(object id, IDbTransaction transaction = null);

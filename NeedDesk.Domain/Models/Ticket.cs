@@ -6,11 +6,10 @@ using System.Text;
 namespace NeedDesk.Domain.Models
 {
     [Table("Tickets")]
-    public class Ticket : EntityBase
+    public class Ticket : EntityBase, IEntity
     {
         [Key]
         public Int64 Tic_id { get; set; }
-        public Int64 Tenant_id { get; set; }
         public Int64 Dep_id { get; set; }
         public Int64 Cli_id { get; set; }
         public Int64 Col_id_soli { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeedDesk.Application.Dtos.Users;
+using NeedDesk.Application.DTO.Users;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Models;
 
@@ -26,6 +26,25 @@ namespace NeedDesk.Api.Controllers
         [AllowAnonymous]
         [HttpPost]
         public object Login([FromBody] LoginDto login)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (login == null) return BadRequest(ModelState);
+
+            try
+            {
+                var result = _loginAppService.FindByLogin(login);
+                if (result != null)
+                    return Ok(result);
+                return NotFound();
+            }
+            catch (ArgumentException ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public object TrocarSenha([FromBody] LoginDto login)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
             if (login == null) return BadRequest(ModelState);
