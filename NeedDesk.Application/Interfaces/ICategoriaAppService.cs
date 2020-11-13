@@ -8,10 +8,10 @@ namespace NeedDesk.Application.Interfaces
     public interface ICategoriaAppService
     {
         IEnumerable<CategoriaResult> All();
-        Int64 Create(CategoriaCreate categoriaCreate);
+        Guid Create(CategoriaCreate categoriaCreate);
         void Update(CategoriaUpdate categoriaUpdate);
-        void Remove(Int64 cat_id);
-        CategoriaResult Get(Int64 cat_id);
-        bool Inativar(Int64 cat_id);
+        void Remove(Guid cat_id);
+        CategoriaResult Get(Guid cat_id);
+        bool Inativar(Guid cat_id);
     }
 }

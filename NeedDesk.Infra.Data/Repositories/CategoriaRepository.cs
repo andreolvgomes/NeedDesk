@@ -15,7 +15,7 @@ namespace NeedDesk.Infra.Data.Repositories
         {
         }
 
-        public bool Inativar(long cat_id)
+        public bool Inativar(Guid cat_id)
         {
             int rowseffected = _connectionFactory.Connect()
                 .Execute("update Categorias set Cat_inativo = 1 where cat_id = @cat_id",

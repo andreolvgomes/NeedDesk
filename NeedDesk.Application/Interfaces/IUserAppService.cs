@@ -9,9 +9,9 @@ namespace NeedDesk.Application.Interfaces
 {
     public interface IUserAppService
     {
-        Int64 Create(UserCreateDto user);
-        void Remove(object id);
-        UserDto Get(Int64 use_id);
+        Guid Create(UserCreateDto user);
+        void Remove(Guid id);
+        UserDto Get(Guid use_id);
         void Update(UserUpdateDto user);
         IEnumerable<UserDto> All();
     }

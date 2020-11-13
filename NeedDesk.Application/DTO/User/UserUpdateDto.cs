@@ -8,7 +8,7 @@ namespace NeedDesk.Application.DTO.User
     public class UserUpdateDto
     {
         [Required(ErrorMessage = "Id é um campo obrigatório")]
-        public Int64 Use_id { get; set; }
+        public Guid Use_id { get; set; }
 
         [Required(ErrorMessage = "Email é um campo obrigatório")]
         [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]

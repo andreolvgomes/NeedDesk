@@ -39,7 +39,7 @@ namespace NeedDesk.Api.Controllers
 
         [HttpGet]
         [Route("{id}", Name = "GetWithCat_id")]
-        public ActionResult Get(Int64 id)
+        public ActionResult Get(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -63,7 +63,7 @@ namespace NeedDesk.Api.Controllers
             try
             {
                 var result = _categoriaAppService.Create(categoriaCreate);
-                if (result > 0)
+                if (result.Valid())
                     return Created(new Uri(Url.Link("GetWithCat_id", new { id = result })), _categoriaAppService.Get(result));
 
                 return BadRequest(ModelState);
@@ -92,7 +92,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(Int64 id)
+        public ActionResult Delete(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -109,7 +109,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Inativar(Int64 id)
+        public ActionResult Inativar(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

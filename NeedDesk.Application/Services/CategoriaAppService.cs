@@ -25,22 +25,22 @@ namespace NeedDesk.Application.Services
             return _mapper.Map<IEnumerable<CategoriaResult>>(_categoriaRepository.All(""));
         }
 
-        public long Create(CategoriaCreate categoriaCreate)
+        public Guid Create(CategoriaCreate categoriaCreate)
         {
-            return (Int64)_categoriaRepository.Insert(_mapper.Map<Categoria>(categoriaCreate));
+            return (Guid)_categoriaRepository.Insert(_mapper.Map<Categoria>(categoriaCreate));
         }
 
-        public CategoriaResult Get(long cat_id)
+        public CategoriaResult Get(Guid cat_id)
         {
             return _mapper.Map<CategoriaResult>(_categoriaRepository.FindById(cat_id));
         }
 
-        public bool Inativar(long cat_id)
+        public bool Inativar(Guid cat_id)
         {
             return _categoriaRepository.Inativar(cat_id);
         }
 
-        public void Remove(long cat_id)
+        public void Remove(Guid cat_id)
         {
             _categoriaRepository.Delete(_categoriaRepository.FindById(cat_id));
         }

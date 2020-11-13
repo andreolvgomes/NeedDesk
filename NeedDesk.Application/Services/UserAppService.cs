@@ -26,17 +26,17 @@ namespace NeedDesk.Application.Services
             return _mapper.Map<IEnumerable<UserDto>>(_userRepository.All(""));
         }
 
-        public Int64 Create(UserCreateDto user)
+        public Guid Create(UserCreateDto user)
         {
-            return (Int64)_userRepository.Insert(_mapper.Map<User>(user));
+            return (Guid)_userRepository.Insert(_mapper.Map<User>(user));
         }
 
-        public UserDto Get(long use_id)
+        public UserDto Get(Guid use_id)
         {
             return _mapper.Map<UserDto>(_userRepository.FindById(use_id));
         }
 
-        public void Remove(object id)
+        public void Remove(Guid id)
         {
             _userRepository.Delete(id);
         }

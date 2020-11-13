@@ -7,7 +7,7 @@ namespace NeedDesk.Application.DTO.Users
 {
     public class UserDto
     {
-        public Int64 Use_id { get; set; }
+        public Guid Use_id { get; set; }
         public string Use_email { get; set; }
         public DateTime CreateAt { get; set; }
     }

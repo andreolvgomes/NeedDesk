@@ -93,7 +93,7 @@ namespace NeedDesk.Application.Services
             return handler.WriteToken(securityToken);
         }
 
-        private object Successful(Int64 tenant, DateTime createDate, DateTime expiration, string token, User user)
+        private object Successful(Guid tenant, DateTime createDate, DateTime expiration, string token, User user)
         {
             return new
             {

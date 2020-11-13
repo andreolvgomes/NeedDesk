@@ -10,5 +10,10 @@ namespace System
         {
             return guid == Guid.Empty;
         }
+
+        public static bool Valid(this Guid guid)
+        {
+            return guid.IsEmpty() == false;
+        }
     }
 }
