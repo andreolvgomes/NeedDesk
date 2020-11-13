@@ -9,8 +9,8 @@ namespace NeedDesk.Domain.Models
     public class TicketAndamento : EntityBase, IEntity
     {
         [Key]
-        public Int64 And_id { get; set; }
-        public Int64 Tic_id { get; set; }
+        public Guid And_id { get; set; }
+        public Guid Tic_id { get; set; }
         public string And_texto { get; set; }
     }
 }

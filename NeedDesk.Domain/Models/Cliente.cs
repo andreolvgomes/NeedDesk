@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Models
     public class Cliente : EntityBase, IEntity
     {
         [Key]
-        public Int64 Cli_id { get; set; }
+        public Guid Cli_id { get; set; }
         public string Cli_nome { get; set; }
         public bool Cli_inativo { get; set; }
     }

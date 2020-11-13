@@ -19,8 +19,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IClassificacaoRepository classificacaoRepository = new ClassificacaoRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());
-                Assert.True(id > 0);
+                var id = (Guid)classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 Classificacao classificacao = classificacaoRepository.FindById(id);
@@ -37,7 +37,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     classificacaoRepository.Insert(CreateClassificacao.NewClassificacao());
 
-                var list = classificacaoRepository.All("tenant_id > 0");
+                var list = classificacaoRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

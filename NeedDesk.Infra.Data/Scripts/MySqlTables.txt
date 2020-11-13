@@ -5,197 +5,212 @@ USE need;
 
 -- TABELAS CADATROS
 CREATE TABLE tenants (
-  tenant_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  identifier				CHAR(36),
+  tenant_id 				CHAR(36) NOT NULL,
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (tenant_id)
+  PRIMARY KEY (tenant_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE users (
-  tenant_id				BIGINT,
-  use_id 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 			CHAR(36) NOT NULL,
+  use_id 				CHAR(36) NOT NULL,
   use_email 			VARCHAR(50) NOT NULL DEFAULT '0',
   use_senha				VARCHAR(50) NOT NULL DEFAULT '',
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   use_inativo			BIT NOT NULL DEFAULT 0,
-  identifier			CHAR(36),
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (use_id)
+  PRIMARY KEY (use_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE categorias (
-  tenant_id					BIGINT,
-  cat_id	 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 				CHAR(36) NOT NULL,
+  cat_id	 				CHAR(36) NOT NULL,
   cat_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   cat_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (cat_id)
+  PRIMARY KEY (cat_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE classificacao (
-  tenant_id					BIGINT,
-  cla_id	 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 				CHAR(36) NOT NULL,
+  cla_id	 				CHAR(36) NOT NULL,
   cla_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   cla_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (cla_id)
+  PRIMARY KEY (cla_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE prioridades (
-  tenant_id					BIGINT,
-  pri_id	 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 				CHAR(36) NOT NULL,
+  pri_id	 				CHAR(36) NOT NULL,
   pri_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   pri_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (pri_id)
+  PRIMARY KEY (pri_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE status (
-  tenant_id					BIGINT,
-  sta_id	 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 				CHAR(36) NOT NULL,
+  sta_id	 				CHAR(36) NOT NULL,
   sta_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   sta_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (sta_id)
+  PRIMARY KEY (sta_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE departamentos (
-  tenant_id					BIGINT,
-  dep_id	 				BIGINT NOT NULL AUTO_INCREMENT,
+  tenant_id 				CHAR(36) NOT NULL,
+  dep_id	 				CHAR(36) NOT NULL,
   dep_descricao				VARCHAR(50) NOT NULL DEFAULT '',
   dep_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (dep_id)
+  PRIMARY KEY (dep_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE clientes (
-  tenant_id					BIGINT,
-  cli_id	 				BIGINT NOT NULL AUTO_INCREMENT,  
+  tenant_id 				CHAR(36) NOT NULL,
+  cli_id	 				CHAR(36) NOT NULL,  
   cli_nome					VARCHAR(50) NOT NULL DEFAULT '',
   cli_inativo				BIT NOT NULL DEFAULT 0,
-  identifier				CHAR(36),
+  sequencial 				BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt					DATETIME,
   updateAt					DATETIME,
   
-  PRIMARY KEY (cli_id)
+  PRIMARY KEY (cli_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE colaboradores (
-  tenant_id				BIGINT,
-  col_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  use_id				BIGINT,
+  tenant_id 			CHAR(36) NOT NULL,
+  col_id 				CHAR(36) NOT NULL,
+  use_id				CHAR(36) NOT NULL,
   col_nome				VARCHAR(50) NOT NULL DEFAULT '',
   Col_sobrenome			VARCHAR(50) NOT NULL DEFAULT '',
   col_inativo			BIT NOT NULL DEFAULT 0,
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (col_id)
+  PRIMARY KEY (col_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE departamentos_categorias (
-  tenant_id				BIGINT,
-  dec_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  dep_id				BIGINT,
-  cat_id				BIGINT,  
+  tenant_id 			CHAR(36) NOT NULL,
+  dec_id 				CHAR(36) NOT NULL,
+  dep_id				CHAR(36) NOT NULL,
+  cat_id				CHAR(36) NOT NULL,  
   
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (dec_id)
+  PRIMARY KEY (dec_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE categorias_classificacao (
-  tenant_id				BIGINT,
-  cal_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  cat_id				BIGINT,
-  cla_id				BIGINT,
+  tenant_id 			CHAR(36) NOT NULL,
+  cal_id 				CHAR(36) NOT NULL,
+  cat_id				CHAR(36) NOT NULL,
+  cla_id				CHAR(36) NOT NULL,
   
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (cal_id)
+  PRIMARY KEY (cal_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE departamentos_status (
-  tenant_id				BIGINT,
-  des_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  dep_id				BIGINT,
-  sta_id				BIGINT,
+  tenant_id 			CHAR(36) NOT NULL,
+  des_id 				CHAR(36) NOT NULL,
+  dep_id				CHAR(36) NOT NULL,
+  sta_id				CHAR(36) NOT NULL,
   
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (des_id)
+  PRIMARY KEY (des_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE departamentos_colaboradores (
-  tenant_id				BIGINT,
-  dec_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  dep_id				BIGINT,
-  col_id				BIGINT,
+  tenant_id 			CHAR(36) NOT NULL,
+  dec_id 				CHAR(36) NOT NULL,
+  dep_id				CHAR(36) NOT NULL,
+  col_id				CHAR(36) NOT NULL,
   
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (dec_id)
+  PRIMARY KEY (dec_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE tickets (
-  tenant_id				BIGINT,
-  tic_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  dep_id				BIGINT,
-  cli_id				BIGINT,
-  col_id_soli			BIGINT,
-  col_id_pend			BIGINT,
-  pri_id				BIGINT,
-  cat_id				BIGINT,
-  cla_id				BIGINT,
-  sta_id				BIGINT,
+  tenant_id 				CHAR(36) NOT NULL,
+  tic_id 				CHAR(36) NOT NULL,
+  dep_id				CHAR(36) NOT NULL,
+  cli_id				CHAR(36) NOT NULL,
+  col_id_soli			CHAR(36) NOT NULL,
+  col_id_pend			CHAR(36) NOT NULL,
+  pri_id				CHAR(36) NOT NULL,
+  cat_id				CHAR(36) NOT NULL,
+  cla_id				CHAR(36) NOT NULL,
+  sta_id				CHAR(36) NOT NULL,
   tick_assunto			VARCHAR(250) NOT NULL DEFAULT '',
   tick_tipo				INT NOT NULL DEFAULT 0,
   
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (tic_id)
+  PRIMARY KEY (tic_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE ticket_andamentos (
-  tenant_id				BIGINT,
-  and_id 				BIGINT NOT NULL AUTO_INCREMENT,
-  tic_id				BIGINT,
+  tenant_id 			CHAR(36) NOT NULL,
+  and_id 				CHAR(36) NOT NULL,
+  tic_id				CHAR(36) NOT NULL,
   and_texto				TEXT,
 
-  identifier			CHAR(36),
+  sequencial 			BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   createAt				DATETIME,
   updateAt				DATETIME,
   
-  PRIMARY KEY (and_id)
+  PRIMARY KEY (and_id),
+  KEY (sequencial)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- CREATE FK

@@ -18,8 +18,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IClienteRepository clienteRepository = new ClienteRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)clienteRepository.Insert(CreateCliente.NewCliente());
-                Assert.True(id > 0);
+                var id = (Guid)clienteRepository.Insert(CreateCliente.NewCliente());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 Cliente cliente = clienteRepository.FindById(id);
@@ -36,7 +36,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     clienteRepository.Insert(CreateCliente.NewCliente());
 
-                var list = clienteRepository.All("tenant_id > 0");
+                var list = clienteRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

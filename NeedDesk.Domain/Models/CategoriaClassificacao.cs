@@ -9,8 +9,8 @@ namespace NeedDesk.Domain.Models
     public class CategoriaClassificacao : EntityBase, IEntity
     {
         [Key]
-        public Int64 Cal_id { get; set; }
-        public Int64 Cat_id { get; set; }
-        public Int64 Cla_id { get; set; }
+        public Guid Cal_id { get; set; }
+        public Guid Cat_id { get; set; }
+        public Guid Cla_id { get; set; }
     }
 }

@@ -18,8 +18,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IDepartamentosStatusRepository departamentosStatusRepository = new DepartamentosStatusRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)departamentosStatusRepository.Insert(NewDepartamentosStatus());
-                Assert.True(id > 0);
+                var id = (Guid)departamentosStatusRepository.Insert(NewDepartamentosStatus());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 DepartamentosStatus departamentosStatus = departamentosStatusRepository.FindById(id);
@@ -36,7 +36,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     departamentosStatusRepository.Insert(NewDepartamentosStatus());
 
-                var list = departamentosStatusRepository.All("tenant_id > 0");
+                var list = departamentosStatusRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

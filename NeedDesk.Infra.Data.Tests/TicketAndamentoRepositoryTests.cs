@@ -18,8 +18,8 @@ namespace NeedDesk.Infra.Data.Tests
                 ITicketAndamentoRepository ticketAndamentoRepository = new TicketAndamentoRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)ticketAndamentoRepository.Insert(NewTicketAndamento());
-                Assert.True(id > 0);
+                var id = (Guid)ticketAndamentoRepository.Insert(NewTicketAndamento());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 TicketAndamento ticketAndamento = ticketAndamentoRepository.FindById(id);
@@ -36,7 +36,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     ticketAndamentoRepository.Insert(NewTicketAndamento());
 
-                var list = ticketAndamentoRepository.All("tenant_id > 0");
+                var list = ticketAndamentoRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

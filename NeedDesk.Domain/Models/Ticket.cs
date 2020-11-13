@@ -9,15 +9,15 @@ namespace NeedDesk.Domain.Models
     public class Ticket : EntityBase, IEntity
     {
         [Key]
-        public Int64 Tic_id { get; set; }
-        public Int64 Dep_id { get; set; }
-        public Int64 Cli_id { get; set; }
-        public Int64 Col_id_soli { get; set; }
-        public Int64 Col_id_pend { get; set; }
-        public Int64 Pri_id { get; set; }
-        public Int64 Cat_id { get; set; }
-        public Int64 Cla_id { get; set; }
-        public Int64 Sta_id { get; set; }
+        public Guid Tic_id { get; set; }
+        public Guid Dep_id { get; set; }
+        public Guid Cli_id { get; set; }
+        public Guid Col_id_soli { get; set; }
+        public Guid Col_id_pend { get; set; }
+        public Guid Pri_id { get; set; }
+        public Guid Cat_id { get; set; }
+        public Guid Cla_id { get; set; }
+        public Guid Sta_id { get; set; }
         public string Tick_assunto { get; set; }
         public Int16 Tick_tipo { get; set; }//0-externo;1-interno
     }

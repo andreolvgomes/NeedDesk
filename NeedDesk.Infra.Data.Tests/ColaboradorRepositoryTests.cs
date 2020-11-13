@@ -18,8 +18,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IColaboradorRepository colaboradorRepository = new ColaboradorRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)colaboradorRepository.Insert(CreateColaborador.NewColaborador());
-                Assert.True(id > 0);
+                var id = (Guid)colaboradorRepository.Insert(CreateColaborador.NewColaborador());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 Colaborador colaborador = colaboradorRepository.FindById(id);
@@ -36,7 +36,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     colaboradorRepository.Insert(CreateColaborador.NewColaborador());
 
-                var list = colaboradorRepository.All("tenant_id > 0");
+                var list = colaboradorRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

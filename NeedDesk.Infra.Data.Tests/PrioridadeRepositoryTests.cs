@@ -19,8 +19,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IPrioridadeRepository prioridadeRepository = new PrioridadeRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)prioridadeRepository.Insert(CreatePrioridade.NewPrioridade());
-                Assert.True(id > 0);
+                var id = (Guid)prioridadeRepository.Insert(CreatePrioridade.NewPrioridade());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 Prioridade prioridade = prioridadeRepository.FindById(id);
@@ -37,7 +37,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     prioridadeRepository.Insert(CreatePrioridade.NewPrioridade());
 
-                var list = prioridadeRepository.All("tenant_id > 0");
+                var list = prioridadeRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

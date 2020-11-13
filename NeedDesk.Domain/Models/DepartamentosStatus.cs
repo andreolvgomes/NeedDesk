@@ -9,8 +9,8 @@ namespace NeedDesk.Domain.Models
     public class DepartamentosStatus : EntityBase, IEntity
     {
         [Key]
-        public Int64 Des_id { get; set; }
-        public Int64 Dep_id { get; set; }
-        public Int64 Sta_id { get; set; }
+        public Guid Des_id { get; set; }
+        public Guid Dep_id { get; set; }
+        public Guid Sta_id { get; set; }
     }
 }

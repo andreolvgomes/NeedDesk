@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Models
     public class Classificacao : EntityBase, IEntity
     {
         [Key]
-        public Int64 Cla_id { get; set; }
+        public Guid Cla_id { get; set; }
         public string Cla_descricao { get; set; }
         public bool Cla_inativo { get; set; }
     }

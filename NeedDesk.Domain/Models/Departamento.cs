@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Models
     public class Departamento : EntityBase, IEntity
     {
         [Key]
-        public Int64 Dep_id { get; set; }
+        public Guid Dep_id { get; set; }
         public string Dep_descricao { get; set; }
         public bool Dep_inativo { get; set; }
     }

@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Models
     public class Status : EntityBase, IEntity
     {
         [Key]
-        public Int64 Sta_id { get; set; }
+        public Guid Sta_id { get; set; }
         public string Sta_descricao { get; set; }
         public bool Sta_inativo { get; set; }
     }

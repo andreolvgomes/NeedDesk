@@ -9,11 +9,12 @@ namespace NeedDesk.Domain.Models
 {
     public abstract class EntityBase
     {
-        public Int64 Tenant_id { get; set; }
+        public Guid Tenant_id { get; set; }
 
         //public Int64 Tenant_id { get; set; }
+
         [IgnoreUpdate]
-        public Guid Identifier { get; set; }
+        public Int64 Sequencial { get; set; }
 
         [IgnoreUpdate]
         [CreateAt]

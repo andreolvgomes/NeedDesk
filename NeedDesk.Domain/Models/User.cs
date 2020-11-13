@@ -7,7 +7,7 @@ namespace NeedDesk.Domain.Models
     public class User : EntityBase, IEntity
     {
         [Key]
-        public Int64 Use_id { get; set; }
+        public Guid Use_id { get; set; }
         public string Use_email { get; set; }
         public string Use_senha { get; set; }
         public bool Use_inativo { get; set; }

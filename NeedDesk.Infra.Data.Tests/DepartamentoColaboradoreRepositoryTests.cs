@@ -18,8 +18,8 @@ namespace NeedDesk.Infra.Data.Tests
                 IDepartamentoColaboradoreRepository departamentoColaboradoreRepository = new DepartamentoColaboradoreRepository(Test.Connect);
 
                 // test insert
-                var id = (Int64)departamentoColaboradoreRepository.Insert(NewDepartamentoColaborador());
-                Assert.True(id > 0);
+                var id = (Guid)departamentoColaboradoreRepository.Insert(NewDepartamentoColaborador());
+                Assert.True(!id.IsEmpty());
 
                 // test get by id
                 DepartamentoColaborador departamentoColaborador = departamentoColaboradoreRepository.FindById(id);
@@ -36,7 +36,7 @@ namespace NeedDesk.Infra.Data.Tests
                 for (int i = 1; i <= 5; i++)
                     departamentoColaboradoreRepository.Insert(NewDepartamentoColaborador());
 
-                var list = departamentoColaboradoreRepository.All("tenant_id > 0");
+                var list = departamentoColaboradoreRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
             catch (Exception ex)

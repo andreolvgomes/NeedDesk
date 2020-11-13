@@ -9,7 +9,7 @@ namespace NeedDesk.Domain.Models
     public class Categoria : EntityBase, IEntity
     {
         [Key]
-        public Int64 Cat_id { get; set; }
+        public Guid Cat_id { get; set; }
         public string Cat_descricao { get; set; }
         public bool Cat_inativo { get; set; }
     }

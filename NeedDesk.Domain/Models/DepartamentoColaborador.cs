@@ -9,8 +9,8 @@ namespace NeedDesk.Domain.Models
     public class DepartamentoColaborador : EntityBase, IEntity
     {
         [Key]
-        public Int64 Dec_id { get; set; }
-        public Int64 Dep_id { get; set; }
-        public Int64 Col_id { get; set; }
+        public Guid Dec_id { get; set; }
+        public Guid Dep_id { get; set; }
+        public Guid Col_id { get; set; }
     }
 }
