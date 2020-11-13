@@ -214,39 +214,39 @@ CREATE TABLE ticket_andamentos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- CREATE FK
-ALTER TABLE users ADD CONSTRAINT fk_users_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE categorias ADD CONSTRAINT fk_categorias_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE classificacao ADD CONSTRAINT fk_classificacao_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE clientes ADD CONSTRAINT fk_clientes_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE departamentos ADD CONSTRAINT fk_departamentos_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE prioridades ADD CONSTRAINT fk_prioridades_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
-ALTER TABLE status ADD CONSTRAINT fk_status_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE users ADD CONSTRAINT fk_users_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE categorias ADD CONSTRAINT fk_categorias_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE classificacao ADD CONSTRAINT fk_classificacao_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE clientes ADD CONSTRAINT fk_clientes_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos ADD CONSTRAINT fk_departamentos_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE prioridades ADD CONSTRAINT fk_prioridades_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE status ADD CONSTRAINT fk_status_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 
 -- colaboradores
-ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE colaboradores ADD CONSTRAINT fk_colaboradores_users FOREIGN KEY (Use_id) REFERENCES users(Use_id);
 
 -- ticket_andamentos
-ALTER TABLE ticket_andamentos ADD CONSTRAINT fk_ticket_andamentos_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE ticket_andamentos ADD CONSTRAINT fk_ticket_andamentos_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE ticket_andamentos ADD CONSTRAINT fk_ticket_andamentos_tickets FOREIGN KEY (tic_id) REFERENCES tickets(tic_id);
 
 -- departamentos_categorias
-ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
 ALTER TABLE departamentos_categorias ADD CONSTRAINT fk_departamentos_categorias_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
 
 -- categorias_classificacao
-ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_categorias FOREIGN KEY (cat_id) REFERENCES categorias(cat_id);
 ALTER TABLE categorias_classificacao ADD CONSTRAINT fk_categorias_classificacao_classificacao FOREIGN KEY (cla_id) REFERENCES classificacao(cla_id);
 
 -- departamentos_status
-ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_departamentos FOREIGN KEY (dep_id) REFERENCES departamentos(dep_id);
 ALTER TABLE departamentos_status ADD CONSTRAINT fk_departamentos_status_status FOREIGN KEY (sta_id) REFERENCES status(sta_id);
 
 -- tickts
-ALTER TABLE tickets ADD CONSTRAINT fk_tickets_tenantss FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
+ALTER TABLE tickets ADD CONSTRAINT fk_tickets_tenants FOREIGN KEY (tenant_id) REFERENCES tenants(tenant_id);
 ALTER TABLE tickets ADD CONSTRAINT fk_tickets_clientes FOREIGN KEY (cli_id) REFERENCES clientes(cli_id);
 ALTER TABLE tickets ADD CONSTRAINT fk_tickets_colaboradores_soli FOREIGN KEY (col_id_soli) REFERENCES colaboradores(col_id);
 ALTER TABLE tickets ADD CONSTRAINT fk_tickets_colaboradores_pend FOREIGN KEY (col_id_pend) REFERENCES colaboradores(col_id);
