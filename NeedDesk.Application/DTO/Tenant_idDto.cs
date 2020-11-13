@@ -5,9 +5,9 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO
 {
-    public class BaseCreateDto
+    public class Tenant_idDto
     {
-        [Range(1, Int64.MaxValue, ErrorMessage = "Tenant_id é obrigatório")]
+        [Required]
         public Guid Tenant_id { get; set; }
     }
 }

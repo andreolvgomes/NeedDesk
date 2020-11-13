@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using NeedDesk.Application.DTO.Categoria;
+using NeedDesk.Application.DTO.Classificacao;
 using NeedDesk.Application.DTO.User;
 using NeedDesk.Application.DTO.Users;
 using NeedDesk.Domain.Models;
@@ -21,6 +22,12 @@ namespace NeedDesk.Infra.CrossCutting.AutoMapper.Mapping
             CreateMap<Categoria, CategoriaCreate>().ReverseMap();
             CreateMap<Categoria, CategoriaResult>().ReverseMap();
             CreateMap<Categoria, CategoriaUpdate>().ReverseMap();
+            CreateMap<Categoria, CategoriaStatus>().ReverseMap();
+
+            CreateMap<Classificacao, ClassificacaoCreate>().ReverseMap();
+            CreateMap<Classificacao, ClassificacaoResult>().ReverseMap();
+            CreateMap<Classificacao, ClassificacaoUpdate>().ReverseMap();
+            CreateMap<Classificacao, ClassificacaoStatus>().ReverseMap();
         }
     }
 }

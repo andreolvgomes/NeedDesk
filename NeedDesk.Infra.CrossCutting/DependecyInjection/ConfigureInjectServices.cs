@@ -16,6 +16,7 @@ namespace NeedDesk.Infra.CrossCutting.DependecyInjection
             services.AddTransient<IUserAppService, UserAppService>();
             services.AddTransient<ILoginAppService, LoginAppService>();
             services.AddTransient<ICategoriaAppService, CategoriaAppService>();
+            services.AddTransient<IClassificacaoAppService, ClassificacaoAppService>();
         }
     }
 }

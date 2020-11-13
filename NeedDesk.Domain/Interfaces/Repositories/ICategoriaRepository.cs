@@ -7,6 +7,6 @@ namespace NeedDesk.Domain.Interfaces.Repositories
 {
     public interface ICategoriaRepository : IRepositoryBase<Categoria>
     {
-        bool Inativar(Guid cat_id);
+        bool Status(Categoria categoria);
     }
 }

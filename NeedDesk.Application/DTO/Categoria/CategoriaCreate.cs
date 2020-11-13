@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO.Categoria
 {
-    public class CategoriaCreate : BaseCreateDto
+    public class CategoriaCreate : Tenant_idDto
     {
         [Required(ErrorMessage = "Descrição é obrigatória")]
         [StringLength(50, ErrorMessage = "Descrição deve ter no máximo {1} caracteres")]

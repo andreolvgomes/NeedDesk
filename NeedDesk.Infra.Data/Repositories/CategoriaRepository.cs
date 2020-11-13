@@ -15,11 +15,15 @@ namespace NeedDesk.Infra.Data.Repositories
         {
         }
 
-        public bool Inativar(Guid cat_id)
+        public bool Status(Categoria categoria)
         {
-            int rowseffected = _connectionFactory.Connect()
-                .Execute("update Categorias set Cat_inativo = 1 where cat_id = @cat_id",
-                new { cat_id });
+            string sql = "update Categorias set Cat_inativo = @Cat_inativo where cat_id = @cat_id";
+            int rowseffected = _connectionFactory.Connect().Execute(sql,
+                new
+                {
+                    categoria.Cat_id,
+                    categoria.Cat_inativo
+                });
 
             return rowseffected > 0;
         }

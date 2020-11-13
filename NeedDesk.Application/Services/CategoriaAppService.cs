@@ -35,19 +35,20 @@ namespace NeedDesk.Application.Services
             return _mapper.Map<CategoriaResult>(_categoriaRepository.FindById(cat_id));
         }
 
-        public bool Inativar(Guid cat_id)
+        public bool Status(CategoriaStatus categoriaStatus)
         {
-            return _categoriaRepository.Inativar(cat_id);
+            return _categoriaRepository.Status(_mapper.Map<Categoria>(categoriaStatus));
         }
 
         public void Remove(Guid cat_id)
         {
-            _categoriaRepository.Delete(_categoriaRepository.FindById(cat_id));
+            _categoriaRepository.Delete(cat_id);
         }
 
         public void Update(CategoriaUpdate categoriaUpdate)
         {
-            _categoriaRepository.Update(_mapper.Map<Categoria>(categoriaUpdate));
+            _categoriaRepository.Update(_mapper.Map(categoriaUpdate, _categoriaRepository
+                        .FindById(categoriaUpdate.Cat_id)));
         }
     }
 }

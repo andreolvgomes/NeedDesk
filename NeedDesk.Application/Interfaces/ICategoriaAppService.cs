@@ -12,6 +12,6 @@ namespace NeedDesk.Application.Interfaces
         void Update(CategoriaUpdate categoriaUpdate);
         void Remove(Guid cat_id);
         CategoriaResult Get(Guid cat_id);
-        bool Inativar(Guid cat_id);
+        bool Status(CategoriaStatus categoriaStatus);
     }
 }

@@ -5,20 +5,20 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeedDesk.Application.DTO.Categoria;
+using NeedDesk.Application.DTO.Classificacao;
 using NeedDesk.Application.Interfaces;
 
 namespace NeedDesk.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriasController : ControllerBase
+    public class ClassificacaoController : ControllerBase
     {
-        private readonly ICategoriaAppService _categoriaAppService;
+        private readonly IClassificacaoAppService _classificacaoAppService;
 
-        public CategoriasController(ICategoriaAppService categoriaAppService)
+        public ClassificacaoController(IClassificacaoAppService classificacaoAppService)
         {
-            _categoriaAppService = categoriaAppService;
+            _classificacaoAppService = classificacaoAppService;
         }
 
         [HttpGet]
@@ -29,7 +29,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_categoriaAppService.All());
+                return Ok(_classificacaoAppService.All());
             }
             catch (ArgumentException ex)
             {
@@ -38,7 +38,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetWithCat_id")]
+        [Route("{id}", Name = "GetWithCla_id")]
         public ActionResult Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -46,7 +46,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_categoriaAppService.Get(id));
+                return Ok(_classificacaoAppService.Get(id));
             }
             catch (ArgumentException ex)
             {
@@ -55,16 +55,16 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] CategoriaCreate categoriaCreate)
+        public ActionResult Post([FromBody] ClassificacaoCreate classificacaoCreate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                var result = _categoriaAppService.Create(categoriaCreate);
+                var result = _classificacaoAppService.Create(classificacaoCreate);
                 if (result.Valid())
-                    return Created(new Uri(Url.Link("GetWithCat_id", new { id = result })), _categoriaAppService.Get(result));
+                    return Created(new Uri(Url.Link("GetWithCat_id", new { id = result })), _classificacaoAppService.Get(result));
 
                 return BadRequest(ModelState);
             }
@@ -75,14 +75,14 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] CategoriaUpdate categoriaUpdate)
+        public ActionResult Put([FromBody] ClassificacaoUpdate classificacaoUpdate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                _categoriaAppService.Update(categoriaUpdate);
+                _classificacaoAppService.Update(classificacaoUpdate);
                 return Ok(new { success = true });
             }
             catch (ArgumentException ex)
@@ -99,7 +99,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                _categoriaAppService.Remove(id);
+                _classificacaoAppService.Remove(id);
                 return Ok(new { success = true });
             }
             catch (ArgumentException ex)
@@ -110,14 +110,14 @@ namespace NeedDesk.Api.Controllers
 
         [HttpPut]
         [Route("status")]
-        public ActionResult Status([FromBody] CategoriaStatus categoriaStatus)
+        public ActionResult Status([FromBody] ClassificacaoStatus classificacaoStatus)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                bool success = _categoriaAppService.Status(categoriaStatus);
+                bool success = _classificacaoAppService.Status(classificacaoStatus);
                 if (success == false)
                     return NotFound();
                 return Ok(new { success = true });

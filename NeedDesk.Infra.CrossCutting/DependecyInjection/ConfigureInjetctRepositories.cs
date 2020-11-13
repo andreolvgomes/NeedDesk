@@ -17,6 +17,7 @@ namespace NeedDesk.Infra.CrossCutting.DependecyInjection
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IClassificacaoRepository, ClassificacaoRepository>();
         }
     }
 }

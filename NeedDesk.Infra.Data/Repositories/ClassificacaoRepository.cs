@@ -1,9 +1,7 @@
-﻿using NeedDesk.Domain.Interfaces;
+﻿using Dapper;
+using NeedDesk.Domain.Interfaces;
 using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NeedDesk.Infra.Data.Repositories
 {
@@ -12,6 +10,19 @@ namespace NeedDesk.Infra.Data.Repositories
         public ClassificacaoRepository(IConnectionFactory connectionFactory)
             : base(connectionFactory)
         {
+        }
+
+        public bool Status(Classificacao classificacao)
+        {
+            string sql = "update Classificacao set Cla_inativo = @Cla_inativo where Cla_id = @Cla_id";
+            int rowseffected = _connectionFactory.Connect().Execute(sql,
+                new
+                {
+                    classificacao.Cla_id,
+                    classificacao.Cla_inativo
+                });
+
+            return rowseffected > 0;
         }
     }
 }
