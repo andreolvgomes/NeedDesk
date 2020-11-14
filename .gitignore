@@ -3,14 +3,18 @@ NeedDesk.Api/obj/
 NeedDesk.Application/obj/
 NeedDesk.Infra.Data/obj/
 NeedDesk.Domain/obj/
-NeedDesk.Infra.Data.Tests/obj/
 NeedDesk.ConsoleApp/obj/
 NeedDesk.Infra.CrossCutting/obj/
+NeedDesk.Application.Tests/obj/
+NeedDesk.Infra.Data.Tests/obj/
+
 
 NeedDesk.Api/bin/
 NeedDesk.Application/bin/
 NeedDesk.Infra.Data/bin/
 NeedDesk.Domain/bin/
-NeedDesk.Infra.Data.Tests/bin/
 NeedDesk.ConsoleApp/bin/
 NeedDesk.Infra.CrossCutting/bin/
+
+NeedDesk.Infra.Data.Tests/bin/
+NeedDesk.Application.Tests/bin/

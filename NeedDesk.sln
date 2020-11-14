@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Infra.CrossCutting
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeedDesk.Api", "NeedDesk.Api\NeedDesk.Api.csproj", "{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeedDesk.Application.Tests", "NeedDesk.Application.Tests\NeedDesk.Application.Tests.csproj", "{E8485919-5D46-4F70-8C66-2BF8C91E195E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8485919-5D46-4F70-8C66-2BF8C91E195E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8485919-5D46-4F70-8C66-2BF8C91E195E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8485919-5D46-4F70-8C66-2BF8C91E195E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8485919-5D46-4F70-8C66-2BF8C91E195E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +81,7 @@ Global
 		{4D52448A-094E-4398-9AFF-1C5968B8694C} = {94EB6397-77CA-4BF7-83D6-1F7D36EA6D11}
 		{6FB9DECA-19E0-4358-930A-2D5B4EC2495B} = {19606983-CB28-402E-9C3D-2057FB389E23}
 		{BE55D746-C4CA-4C9A-ACCB-92EB669BCFFF} = {62216538-ACE5-4D02-B5B9-FAC0501D7299}
+		{E8485919-5D46-4F70-8C66-2BF8C91E195E} = {94EB6397-77CA-4BF7-83D6-1F7D36EA6D11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {26FD91BC-5DEB-4A58-A8E3-5EF24EE6240F}
