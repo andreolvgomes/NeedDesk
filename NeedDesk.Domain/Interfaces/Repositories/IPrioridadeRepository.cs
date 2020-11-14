@@ -8,5 +8,6 @@ namespace NeedDesk.Domain.Interfaces.Repositories
 {
     public interface IPrioridadeRepository : IRepositoryBase<Prioridade>
     {
+        public bool Status(Prioridade prioridade);
     }
 }

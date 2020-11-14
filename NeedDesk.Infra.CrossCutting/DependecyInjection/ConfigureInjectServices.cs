@@ -1,11 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Application.Services;
-using NeedDesk.Domain.Interfaces.Repositories;
-using NeedDesk.Infra.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NeedDesk.Infra.CrossCutting.DependecyInjection
 {
@@ -17,6 +12,11 @@ namespace NeedDesk.Infra.CrossCutting.DependecyInjection
             services.AddTransient<ILoginAppService, LoginAppService>();
             services.AddTransient<ICategoriaAppService, CategoriaAppService>();
             services.AddTransient<IClassificacaoAppService, ClassificacaoAppService>();
+            services.AddTransient<IPrioridadeAppService, PrioridadeAppService>();
+            services.AddTransient<IStatusAppService, StatusAppService>();
+            services.AddTransient<IDepartamentoAppService, DepartamentoAppService>();
+            services.AddTransient<IClienteAppService, ClienteAppService>();
+            services.AddTransient<IColaboradorAppService, ColaboradorAppService>();
         }
     }
 }

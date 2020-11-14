@@ -15,9 +15,15 @@ namespace NeedDesk.Infra.CrossCutting.DependecyInjection
             // AddScoped: mesma instância para ciclo de vida
             // AddTransient: nova instância a cada vez que precisa
             services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IClassificacaoRepository, ClassificacaoRepository>();
+            services.AddTransient<IPrioridadeRepository, PrioridadeRepository>();
+            services.AddTransient<IStatusRepository, StatusRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+            services.AddTransient<IDepartamentoRepository, DepartamentoRepository>();
+            services.AddTransient<IColaboradorRepository, ColaboradorRepository>();
         }
     }
 }

@@ -7,5 +7,6 @@ namespace NeedDesk.Domain.Interfaces.Repositories
 {
     public interface IDepartamentoRepository : IRepositoryBase<Departamento>
     {
+        public bool Status(Departamento departamento);
     }
 }
