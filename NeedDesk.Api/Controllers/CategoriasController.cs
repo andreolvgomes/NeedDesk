@@ -82,6 +82,8 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_categoriaAppService.Get(categoriaUpdate.Cat_id) == null) return BadRequest();
+
                 _categoriaAppService.Update(categoriaUpdate);
                 return Ok(new { success = true });
             }
@@ -99,6 +101,8 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_categoriaAppService.Get(id) == null) return BadRequest();
+
                 _categoriaAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -117,6 +121,8 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_categoriaAppService.Get(categoriaStatus.Cat_id) == null) return BadRequest();
+
                 bool success = _categoriaAppService.Status(categoriaStatus);
                 if (success == false)
                     return NotFound();

@@ -39,7 +39,7 @@ namespace NeedDesk.Infra.Data.Tests
                 var list = categoriaClassificacaoRepository.All("tenant_id <> ''");
                 Assert.True(list.Count() > 0);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

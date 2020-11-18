@@ -7,7 +7,7 @@ NeedDesk.ConsoleApp/obj/
 NeedDesk.Infra.CrossCutting/obj/
 NeedDesk.Application.Tests/obj/
 NeedDesk.Infra.Data.Tests/obj/
-
+NeedDesk.Api.Tests/obj/
 
 NeedDesk.Api/bin/
 NeedDesk.Application/bin/
@@ -18,3 +18,4 @@ NeedDesk.Infra.CrossCutting/bin/
 
 NeedDesk.Infra.Data.Tests/bin/
 NeedDesk.Application.Tests/bin/
+NeedDesk.Api.Tests/bin/
