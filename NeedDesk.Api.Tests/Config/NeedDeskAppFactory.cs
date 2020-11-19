@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NeedDesk.Api.Tests.Config
 {
@@ -12,6 +13,6 @@ namespace NeedDesk.Api.Tests.Config
         {
             builder.UseStartup<TStartup>();
             builder.UseEnvironment("Testing");
-        }
+        }       
     }
 }

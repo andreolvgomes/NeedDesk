@@ -21,19 +21,19 @@ namespace NeedDesk.Application.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<UserDto> All()
+        public IEnumerable<UserResult> All()
         {
-            return _mapper.Map<IEnumerable<UserDto>>(_userRepository.All(""));
+            return _mapper.Map<IEnumerable<UserResult>>(_userRepository.All(""));
         }
 
-        public Guid Create(UserCreateDto user)
+        public Guid Create(UserCreate user)
         {
             return (Guid)_userRepository.Insert(_mapper.Map<User>(user));
         }
 
-        public UserDto Get(Guid use_id)
+        public UserResult Get(Guid use_id)
         {
-            return _mapper.Map<UserDto>(_userRepository.FindById(use_id));
+            return _mapper.Map<UserResult>(_userRepository.FindById(use_id));
         }
 
         public void Remove(Guid id)

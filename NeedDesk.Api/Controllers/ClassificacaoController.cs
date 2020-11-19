@@ -46,7 +46,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_classificacaoAppService.Get(id));
+                var result = _classificacaoAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -82,6 +84,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_classificacaoAppService.Get(classificacaoUpdate.Cla_id) == null) return BadRequest();
                 _classificacaoAppService.Update(classificacaoUpdate);
                 return Ok(new { success = true });
             }
@@ -99,6 +102,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_classificacaoAppService.Get(id) == null) return BadRequest();
                 _classificacaoAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -117,6 +121,8 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_classificacaoAppService.Get(classificacaoStatus.Cla_id) == null) return BadRequest();
+
                 bool success = _classificacaoAppService.Status(classificacaoStatus);
                 if (success == false)
                     return NotFound();

@@ -46,7 +46,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_categoriaAppService.Get(id));
+                var result = _categoriaAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {

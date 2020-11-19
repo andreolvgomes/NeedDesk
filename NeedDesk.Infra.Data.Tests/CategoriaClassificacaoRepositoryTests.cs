@@ -10,7 +10,8 @@ namespace NeedDesk.Infra.Data.Tests
 {
     public class CategoriaClassificacaoRepositoryTests
     {
-        [Fact]
+        [Fact(DisplayName = "Operações CRUD")]
+        [Trait("Categorias/Classificações", "Repository")]
         public void CrudTest()
         {
             try

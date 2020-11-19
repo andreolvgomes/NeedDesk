@@ -20,8 +20,8 @@ namespace NeedDesk.Infra.CrossCutting.AutoMapper.Mapping
         public ModelToDtoMapping()
         {
             CreateMap<User, LoginDto>().ReverseMap();
-            CreateMap<User, UserDto>().ReverseMap();
-            CreateMap<User, UserCreateDto>().ReverseMap();
+            CreateMap<User, UserResult>().ReverseMap();
+            CreateMap<User, UserCreate>().ReverseMap();
             CreateMap<User, UserUpdateDto>().ReverseMap();
 
             CreateMap<Categoria, CategoriaCreate>().ReverseMap();

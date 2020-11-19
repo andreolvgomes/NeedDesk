@@ -13,3 +13,6 @@ https://codewithshadman.com/cqrs/
 
 Boriszn / DeviceManager.Api
 https://github.com/Boriszn/DeviceManager.Api
+
+CQRS : A Cross Examination Of How It Works
+https://www.codeproject.com/Articles/991648/CQRS-A-Cross-Examination-Of-How-It-Works#So-What-Exactly-Is-CQRS?

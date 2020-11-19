@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO.User
 {
-    public class UserCreateDto
+    public class UserCreate
     {
         [Required(ErrorMessage = "Email é um campo obrigatório")]
         [EmailAddress(ErrorMessage = "E-mail em formato inválido.")]

@@ -52,7 +52,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] UserCreateDto user)
+        public ActionResult Post([FromBody] UserCreate user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

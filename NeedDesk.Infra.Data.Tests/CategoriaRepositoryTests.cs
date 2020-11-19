@@ -9,7 +9,8 @@ namespace NeedDesk.Infra.Data.Tests
 {
     public class CategoriaRepositoryTests
     {
-        [Fact]
+        [Fact(DisplayName = "Operações CRUD")]
+        [Trait("Categorias", "Repository")]
         public void CrudTest()
         {
             var tenant_id = CreateTenant.Tenant_id();
