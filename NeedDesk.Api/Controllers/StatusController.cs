@@ -46,7 +46,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_statusAppService.Get(id));
+                var result = _statusAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -82,6 +84,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_statusAppService.Get(statusUpdate.Sta_id) == null) return BadRequest();
                 _statusAppService.Update(statusUpdate);
                 return Ok(new { success = true });
             }
@@ -99,6 +102,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_statusAppService.Get(id) == null) return BadRequest();
                 _statusAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -117,6 +121,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_statusAppService.Get(statusStatus.Sta_id) == null) return BadRequest();
                 bool success = _statusAppService.Status(statusStatus);
                 if (success == false)
                     return NotFound();

@@ -11,7 +11,8 @@ namespace NeedDesk.Infra.Data.Tests
 {
     public class PrioridadeRepositoryTests
     {
-        [Fact]
+        [Fact(DisplayName = "Operações CRUD")]
+        [Trait("Prioridades", "Repository")]
         public void CrudTest()
         {
             try

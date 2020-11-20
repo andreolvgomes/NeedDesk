@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NeedDesk.Application.DTO.Prioridade;
 using NeedDesk.Application.Interfaces;
+using Ubiety.Dns.Core.Records.NotUsed;
 
 namespace NeedDesk.Api.Controllers
 {
@@ -46,7 +47,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_prioridadeAppService.Get(id));
+                var result = _prioridadeAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -82,6 +85,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_prioridadeAppService.Get(prioridadeUpdate.Pri_id) == null) return BadRequest();
                 _prioridadeAppService.Update(prioridadeUpdate);
                 return Ok(new { success = true });
             }
@@ -99,6 +103,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_prioridadeAppService.Get(id) == null) return BadRequest();
                 _prioridadeAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -117,6 +122,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_prioridadeAppService.Get(prioridadeStatus.Pri_id) == null) return BadRequest();
                 bool success = _prioridadeAppService.Status(prioridadeStatus);
                 if (success == false)
                     return NotFound();

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using NeedDesk.Application.DTO.Cliente;
 using NeedDesk.Application.DTO.Prioridade;
 using NeedDesk.Application.Interfaces;
+using Ubiety.Dns.Core.Records.NotUsed;
 
 namespace NeedDesk.Api.Controllers
 {
@@ -47,7 +48,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_clienteAppService.Get(id));
+                var result = _clienteAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -83,6 +86,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_clienteAppService.Get(clienteUpdate.Cli_id) == null) return BadRequest();
                 _clienteAppService.Update(clienteUpdate);
                 return Ok(new { success = true });
             }
@@ -100,6 +104,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_clienteAppService.Get(id) == null) return BadRequest();
                 _clienteAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -118,6 +123,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_clienteAppService.Get(clienteStatus.Cli_id) == null) return BadRequest();
                 bool success = _clienteAppService.Status(clienteStatus);
                 if (success == false)
                     return NotFound();
