@@ -47,7 +47,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_departamentoAppService.Get(id));
+                var result = _departamentoAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -83,6 +85,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_departamentoAppService.Get(departamentoUpdate.Dep_id) == null) return BadRequest();
                 _departamentoAppService.Update(departamentoUpdate);
                 return Ok(new { success = true });
             }
@@ -100,6 +103,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_departamentoAppService.Get(id) == null) return BadRequest();
                 _departamentoAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -118,6 +122,7 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                if (_departamentoAppService.Get(departamentoStatus.Dep_id) == null) return BadRequest();
                 bool success = _departamentoAppService.Status(departamentoStatus);
                 if (success == false)
                     return NotFound();

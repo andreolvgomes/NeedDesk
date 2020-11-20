@@ -25,17 +25,17 @@ namespace NeedDesk.Api.Tests
         public async Task NovaCategoria_CadastrarNovo_DeveCadastrarSucesso()
         {
             // Arrange
-            var itemInfo = new CategoriaCreate()
+            var value = new CategoriaCreate()
             {
                 Cat_descricao = Guid.NewGuid().ToString(),
                 Tenant_id = TenantId.Tenant_id
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PostAsJsonAsync("api/categorias", itemInfo);
+            var response = await _testsFixture.Client.PostAsJsonAsync("api/categorias", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Atualizar Categoria")]
@@ -43,18 +43,18 @@ namespace NeedDesk.Api.Tests
         public async Task UpdateCategoria_Atualizar_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraCategoriaApi();
-            var itemInfo = new CategoriaUpdate()
+            Guid cat_id = await _testsFixture.NewCategoriaApi();
+            var value = new CategoriaUpdate()
             {
                 Cat_id = cat_id,
                 Cat_descricao = Guid.NewGuid().ToString()
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PutAsJsonAsync("api/categorias", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/categorias", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Atualizar Categoria Não existente")]
@@ -62,17 +62,17 @@ namespace NeedDesk.Api.Tests
         public async Task UpdateCategoria_Atualizar_DeveRetornarBadRequest()
         {
             // Arrange
-            var itemInfo = new CategoriaUpdate()
+            var value = new CategoriaUpdate()
             {
                 Cat_id = Guid.NewGuid(),
                 Cat_descricao = Guid.NewGuid().ToString()
             };
 
             // Act
-            var putResponse = await _testsFixture.Client.PutAsJsonAsync("api/categorias", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/categorias", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, putResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Remover Categoria")]
@@ -80,13 +80,13 @@ namespace NeedDesk.Api.Tests
         public async Task RemoverCategoria_CategoriaExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraCategoriaApi();
+            Guid cat_id = await _testsFixture.NewCategoriaApi();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/categorias/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/categorias/{cat_id}");
 
             // Assert
-            deleteResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Remover Categoria Não existente")]
@@ -97,10 +97,10 @@ namespace NeedDesk.Api.Tests
             var cat_id = Guid.NewGuid();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/categorias/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/categorias/{cat_id}");
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, deleteResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Listar Categorias")]
@@ -119,13 +119,13 @@ namespace NeedDesk.Api.Tests
         public async Task Get_CategoriaExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraCategoriaApi();
+            Guid cat_id = await _testsFixture.NewCategoriaApi();
 
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/categorias/{cat_id}");
+            var response = await _testsFixture.Client.GetAsync($"api/categorias/{cat_id}");
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Buscar Categoria Não existente pelo Id")]
@@ -147,18 +147,18 @@ namespace NeedDesk.Api.Tests
         public async Task Status_MudarStatusCategoria_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraCategoriaApi();
-            CategoriaStatus categoriaStatus = new CategoriaStatus()
+            Guid cat_id = await _testsFixture.NewCategoriaApi();
+            var value = new CategoriaStatus()
             {
                 Cat_id = cat_id,
                 Cat_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/categorias/status", categoriaStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/categorias/status", value);
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Mudar Status(ativo/inativo) de Categoria Não existente")]
@@ -166,17 +166,17 @@ namespace NeedDesk.Api.Tests
         public async Task Status_MudarStatusCategoria_DeveRetornarBadRequest()
         {
             // Arrange
-            CategoriaStatus categoriaStatus = new CategoriaStatus()
+            var value = new CategoriaStatus()
             {
                 Cat_id = Guid.NewGuid(),
                 Cat_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/categorias/status", categoriaStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/categorias/status", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }

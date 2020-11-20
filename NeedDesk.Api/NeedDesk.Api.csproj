@@ -15,5 +15,9 @@
     <ProjectReference Include="..\NeedDesk.Infra.CrossCutting\NeedDesk.Infra.CrossCutting.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Installer\" />
+  </ItemGroup>
+
 
 </Project>

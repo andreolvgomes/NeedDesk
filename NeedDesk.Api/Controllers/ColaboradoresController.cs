@@ -48,7 +48,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
-                return Ok(_colaboradorAppService.Get(id));
+                var result = _colaboradorAppService.Get(id);
+                if (result == null) return BadRequest();
+                return Ok(result);
             }
             catch (ArgumentException ex)
             {
@@ -84,6 +86,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                var result = _colaboradorAppService.Get(colaboradorUpdate.Col_id);
+                if (result == null) return BadRequest();
+
                 _colaboradorAppService.Update(colaboradorUpdate);
                 return Ok(new { success = true });
             }
@@ -101,6 +106,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                var result = _colaboradorAppService.Get(id);
+                if (result == null) return BadRequest();
+
                 _colaboradorAppService.Remove(id);
                 return Ok(new { success = true });
             }
@@ -119,6 +127,9 @@ namespace NeedDesk.Api.Controllers
 
             try
             {
+                var result = _colaboradorAppService.Get(colaboradorStatus.Col_id);
+                if (result == null) return BadRequest();
+
                 bool success = _colaboradorAppService.Status(colaboradorStatus);
                 if (success == false)
                     return NotFound();

@@ -22,11 +22,11 @@ namespace NeedDesk.Api.Tests
 
         [Fact(DisplayName = "Cadastrar nova Categoria")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task NovaCategoria_CadastrarNovo_DeveCadastrarSucesso()
+        public async Task NovaColaborador_CadastrarNovo_DeveCadastrarSucesso()
         {
-            Guid cat_id = await _testsFixture.CadastraUserApi();
+            Guid cat_id = await _testsFixture.NewUserApi();
             // Arrange
-            var itemInfo = new ColaboradorCreate()
+            var value = new ColaboradorCreate()
             {
                 Col_nome = Guid.NewGuid().ToString(),
                 Col_sobrenome = Guid.NewGuid().ToString(),
@@ -35,152 +35,152 @@ namespace NeedDesk.Api.Tests
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PostAsJsonAsync("api/colaboradores", itemInfo);
+            var response = await _testsFixture.Client.PostAsJsonAsync("api/colaboradores", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Atualizar Categoria")]
+        [Fact(DisplayName = "Atualizar Colaborador")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task UpdateCategoria_Atualizar_DeveRetornarSucesso()
+        public async Task UpdateColaborador_Atualizar_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraColaboradorApi();
-            var itemInfo = new ColaboradorUpdate()
+            Guid col_id = await _testsFixture.NewColaboradorApi();
+            var value = new ColaboradorUpdate()
             {
-                Col_id = cat_id,
+                Col_id = col_id,
                 Col_nome = Guid.NewGuid().ToString(),
                 Col_sobrenome = Guid.NewGuid().ToString(),
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PutAsJsonAsync("api/colaboradores", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/colaboradores", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Atualizar Categoria Não existente")]
+        [Fact(DisplayName = "Atualizar Colaborador Não existente")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task UpdateCategoria_Atualizar_DeveRetornarBadRequest()
+        public async Task UpdateColaborador_Atualizar_DeveRetornarBadRequest()
         {
             // Arrange
-            var itemInfo = new ColaboradorUpdate()
+            var value = new ColaboradorUpdate()
             {
                 Col_id = Guid.NewGuid(),
                 Col_nome = Guid.NewGuid().ToString(),
                 Col_sobrenome = Guid.NewGuid().ToString(),
             };
             // Act
-            var putResponse = await _testsFixture.Client.PutAsJsonAsync("api/colaboradores", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/colaboradores", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, putResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
-        [Fact(DisplayName = "Remover Categoria")]
+        [Fact(DisplayName = "Remover Colaborador")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task RemoverCategoria_CategoriaExistente_DeveRetornarSucesso()
+        public async Task RemoverColaborador_ColaboradorExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraColaboradorApi();
+            Guid cat_id = await _testsFixture.NewColaboradorApi();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/colaboradores/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/colaboradores/{cat_id}");
 
             // Assert
-            deleteResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Remover Categoria Não existente")]
+        [Fact(DisplayName = "Remover Colaborador Não existente")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task RemoverCategoria_CategoriaNaoExistente_DeveRetornarBadRequest()
+        public async Task RemoverColaborador_ColaboradorNaoExistente_DeveRetornarBadRequest()
         {
             // Arrange
             var cat_id = Guid.NewGuid();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/colaboradores/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/colaboradores/{cat_id}");
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, deleteResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
-        [Fact(DisplayName = "Listar Categorias")]
+        [Fact(DisplayName = "Listar Colaboradores")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task GetAll_CategoriasExistentes_DeveRetornarSucesso()
+        public async Task GetAll_ColaboradoresExistentes_DeveRetornarSucesso()
         {
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/colaboradores/");
+            var response = await _testsFixture.Client.GetAsync($"api/colaboradores/");
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Buscar Categoria pelo Id")]
+        [Fact(DisplayName = "Buscar Colaborador pelo Id")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task Get_CategoriaExistente_DeveRetornarSucesso()
+        public async Task Get_ColaboradorExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraColaboradorApi();
+            Guid cat_id = await _testsFixture.NewColaboradorApi();
 
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/colaboradores/{cat_id}");
+            var response = await _testsFixture.Client.GetAsync($"api/colaboradores/{cat_id}");
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Buscar Categoria Não existente pelo Id")]
+        [Fact(DisplayName = "Buscar Colaborador Não existente pelo Id")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task Get_CategoriaNaoExistente_DeveRetornarBadRequest()
+        public async Task GetColaboradorNaoExistente_DeveRetornarBadRequest()
         {
             // Arrange
             Guid cat_id = Guid.NewGuid();
 
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/colaboradores/{cat_id}");
+            var response = await _testsFixture.Client.GetAsync($"api/colaboradores/{cat_id}");
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Mudar Status(ativo/inativo)")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task Status_MudarStatusCategoria_DeveRetornarSucesso()
+        public async Task Status_MudarStatusColaborador_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraColaboradorApi();
-            ColaboradorStatus colaboradorStatus = new ColaboradorStatus()
+            Guid cat_id = await _testsFixture.NewColaboradorApi();
+            var value = new ColaboradorStatus()
             {
                 Col_id = cat_id,
                 Col_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/colaboradores/status", colaboradorStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/colaboradores/status", value);
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
-        [Fact(DisplayName = "Mudar Status(ativo/inativo) de Categoria Não existente")]
+        [Fact(DisplayName = "Mudar Status(ativo/inativo) de Colaborador Não existente")]
         [Trait("Colaboradores", "Integração API")]
-        public async Task Status_MudarStatusCategoria_DeveRetornarBadRequest()
+        public async Task Status_MudarStatusColaborador_DeveRetornarBadRequest()
         {
             // Arrange
-            ColaboradorStatus colaboradorStatus = new ColaboradorStatus()
+            var value = new ColaboradorStatus()
             {
                 Col_id = Guid.NewGuid(),
                 Col_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/colaboradores/status", colaboradorStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/colaboradores/status", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }

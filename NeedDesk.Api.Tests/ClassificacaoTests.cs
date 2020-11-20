@@ -25,17 +25,17 @@ namespace NeedDesk.Api.Tests
         public async Task NovaClassificao_CadastrarNovo_DeveCadastrarSucesso()
         {
             // Arrange
-            var itemInfo = new ClassificacaoCreate()
+            var value = new ClassificacaoCreate()
             {
                 Cla_descricao = Guid.NewGuid().ToString(),
                 Tenant_id = TenantId.Tenant_id
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PostAsJsonAsync("api/classificacao", itemInfo);
+            var response = await _testsFixture.Client.PostAsJsonAsync("api/classificacao", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Atualizar Classificação")]
@@ -43,18 +43,18 @@ namespace NeedDesk.Api.Tests
         public async Task UpdateClassificao_Atualizar_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraClassificacaoApi();
-            var itemInfo = new ClassificacaoUpdate()
+            Guid cat_id = await _testsFixture.NewClassificacaoApi();
+            var value = new ClassificacaoUpdate()
             {
                 Cla_id = cat_id,
                 Cla_descricao = Guid.NewGuid().ToString()
             };
 
             // Act
-            var postResponse = await _testsFixture.Client.PutAsJsonAsync("api/classificacao", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/classificacao", value);
 
             // Assert
-            postResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Atualizar Classificação Não existente")]
@@ -62,17 +62,17 @@ namespace NeedDesk.Api.Tests
         public async Task UpdateClassificao_Atualizar_DeveRetornarBadRequest()
         {
             // Arrange
-            var itemInfo = new ClassificacaoUpdate()
+            var value = new ClassificacaoUpdate()
             {
                 Cla_id = Guid.NewGuid(),
                 Cla_descricao = Guid.NewGuid().ToString()
             };
 
             // Act
-            var putResponse = await _testsFixture.Client.PutAsJsonAsync("api/classificacao", itemInfo);
+            var response = await _testsFixture.Client.PutAsJsonAsync("api/classificacao", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, putResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Remover Classificação")]
@@ -80,13 +80,13 @@ namespace NeedDesk.Api.Tests
         public async Task RemoverClassificao_ClassificaoExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraClassificacaoApi();
+            Guid cat_id = await _testsFixture.NewClassificacaoApi();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/classificacao/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/classificacao/{cat_id}");
 
             // Assert
-            deleteResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Remover Classificação Não existente")]
@@ -97,10 +97,10 @@ namespace NeedDesk.Api.Tests
             var cat_id = Guid.NewGuid();
 
             // Act
-            var deleteResponse = await _testsFixture.Client.DeleteAsync($"api/classificacao/{cat_id}");
+            var response = await _testsFixture.Client.DeleteAsync($"api/classificacao/{cat_id}");
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, deleteResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Listar Classificações")]
@@ -108,10 +108,10 @@ namespace NeedDesk.Api.Tests
         public async Task GetAll_ClassificaosExistentes_DeveRetornarSucesso()
         {
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/classificacao/");
+            var response = await _testsFixture.Client.GetAsync($"api/classificacao/");
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Buscar Classificação pelo Id")]
@@ -119,13 +119,13 @@ namespace NeedDesk.Api.Tests
         public async Task Get_ClassificaoExistente_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraClassificacaoApi();
+            Guid cat_id = await _testsFixture.NewClassificacaoApi();
 
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/classificacao/{cat_id}");
+            var response = await _testsFixture.Client.GetAsync($"api/classificacao/{cat_id}");
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Buscar Classificação Não existente pelo Id")]
@@ -136,10 +136,10 @@ namespace NeedDesk.Api.Tests
             Guid cat_id = Guid.NewGuid();
 
             // Act
-            var getResponse = await _testsFixture.Client.GetAsync($"api/classificacao/{cat_id}");
+            var response = await _testsFixture.Client.GetAsync($"api/classificacao/{cat_id}");
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact(DisplayName = "Mudar Status(ativo/inativo)")]
@@ -147,18 +147,18 @@ namespace NeedDesk.Api.Tests
         public async Task Status_MudarStatusClassificao_DeveRetornarSucesso()
         {
             // Arrange
-            Guid cat_id = await _testsFixture.CadastraClassificacaoApi();
-            ClassificacaoStatus ClassificaoStatus = new ClassificacaoStatus()
+            Guid cat_id = await _testsFixture.NewClassificacaoApi();
+            var value = new ClassificacaoStatus()
             {
                 Cla_id = cat_id,
                 Cla_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/classificacao/status", ClassificaoStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/classificacao/status", value);
 
             // Assert
-            getResponse.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
         }
 
         [Fact(DisplayName = "Mudar Status(ativo/inativo) de Classificação Não existente")]
@@ -166,17 +166,17 @@ namespace NeedDesk.Api.Tests
         public async Task Status_MudarStatusClassificao_DeveRetornarBadRequest()
         {
             // Arrange
-            ClassificacaoStatus ClassificaoStatus = new ClassificacaoStatus()
+            var value = new ClassificacaoStatus()
             {
                 Cla_id = Guid.NewGuid(),
                 Cla_inativo = true,
             };
 
             // Act
-            var getResponse = await _testsFixture.Client.PutAsJsonAsync($"api/classificacao/status", ClassificaoStatus);
+            var response = await _testsFixture.Client.PutAsJsonAsync($"api/classificacao/status", value);
 
             // Assert
-            Assert.Equal(HttpStatusCode.BadRequest, getResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }

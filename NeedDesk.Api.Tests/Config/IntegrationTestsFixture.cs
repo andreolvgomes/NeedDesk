@@ -2,12 +2,11 @@
 using NeedDesk.Application.DTO.Categoria;
 using NeedDesk.Application.DTO.Classificacao;
 using NeedDesk.Application.DTO.Colaborador;
+using NeedDesk.Application.DTO.Departamento;
 using NeedDesk.Application.DTO.User;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -37,18 +36,18 @@ namespace NeedDesk.Api.Tests.Config
             Client = Factory.CreateClient(clientOptions);
         }
 
-        public async Task<Guid> CadastraCategoriaApi()
+        public async Task<Guid> NewCategoriaApi()
         {
-            var itemInfo = new CategoriaCreate()
+            CategoriaCreate value = new CategoriaCreate()
             {
                 Cat_descricao = Guid.NewGuid().ToString(),
-                Tenant_id = new Guid("e40b0c16-2a13-4fad-97c0-11baa91533d8")
+                Tenant_id = TenantId.Tenant_id
             };
 
             // Recriando o client para evitar configurações de Web
             Client = Factory.CreateClient();
 
-            var response = await Client.PostAsJsonAsync("api/categorias", itemInfo);
+            var response = await Client.PostAsJsonAsync("api/categorias", value);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
 
@@ -56,18 +55,37 @@ namespace NeedDesk.Api.Tests.Config
             return jsonString.Cat_id;
         }
 
-        public async Task<Guid> CadastraClassificacaoApi()
+        public async Task<Guid> NewDepartamentoApi()
         {
-            var itemInfo = new ClassificacaoCreate()
+            var value = new DepartamentoCreate()
             {
-                Cla_descricao = Guid.NewGuid().ToString(),
-                Tenant_id = new Guid("e40b0c16-2a13-4fad-97c0-11baa91533d8")
+                Dep_descricao = Guid.NewGuid().ToString(),
+                Tenant_id = TenantId.Tenant_id
             };
 
             // Recriando o client para evitar configurações de Web
             Client = Factory.CreateClient();
 
-            var response = await Client.PostAsJsonAsync("api/classificacao", itemInfo);
+            var response = await Client.PostAsJsonAsync("api/departamentos", value);
+            response.EnsureSuccessStatusCode();
+            var result = await response.Content.ReadAsStringAsync();
+
+            var jsonString = JsonConvert.DeserializeObject<DepartamentoResult>(result);
+            return jsonString.Dep_id;
+        }
+
+        public async Task<Guid> NewClassificacaoApi()
+        {
+            ClassificacaoCreate value = new ClassificacaoCreate()
+            {
+                Cla_descricao = Guid.NewGuid().ToString(),
+                Tenant_id = TenantId.Tenant_id
+            };
+
+            // Recriando o client para evitar configurações de Web
+            Client = Factory.CreateClient();
+
+            var response = await Client.PostAsJsonAsync("api/classificacao", value);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
 
@@ -75,19 +93,21 @@ namespace NeedDesk.Api.Tests.Config
             return jsonString.Cla_id;
         }
 
-        public async Task<Guid> CadastraColaboradorApi()
+        public async Task<Guid> NewColaboradorApi()
         {
-            var itemInfo = new ColaboradorCreate()
+            Guid user_id = await this.NewUserApi();
+            ColaboradorCreate value = new ColaboradorCreate()
             {
                 Col_nome = Guid.NewGuid().ToString(),
                 Col_sobrenome = Guid.NewGuid().ToString(),
-                Tenant_id = TenantId.Tenant_id
+                Tenant_id = TenantId.Tenant_id,
+                Use_id = user_id
             };
 
             // Recriando o client para evitar configurações de Web
             Client = Factory.CreateClient();
 
-            var response = await Client.PostAsJsonAsync("api/colaborador", itemInfo);
+            var response = await Client.PostAsJsonAsync("api/colaboradores", value);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
 
@@ -95,18 +115,19 @@ namespace NeedDesk.Api.Tests.Config
             return jsonString.Col_id;
         }
 
-        public async Task<Guid> CadastraUserApi()
+        public async Task<Guid> NewUserApi()
         {
-            var itemInfo = new UserCreate()
+            UserCreate value = new UserCreate()
             {
                 Use_email = "teste@gmail.com",
                 Use_senha = "123456",
+                Tenant_id = TenantId.Tenant_id
             };
 
             // Recriando o client para evitar configurações de Web
             Client = Factory.CreateClient();
 
-            var response = await Client.PostAsJsonAsync("api/users", itemInfo);
+            var response = await Client.PostAsJsonAsync("api/users", value);
             response.EnsureSuccessStatusCode();
             var result = await response.Content.ReadAsStringAsync();
 
