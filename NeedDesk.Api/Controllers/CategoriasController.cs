@@ -11,7 +11,7 @@ using NeedDesk.Application.Interfaces;
 
 namespace NeedDesk.Api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpGet]
-        //[HttpGet(ApiRoutes.Categorias.GetAll)]
+        [Route(ApiRoutes.Categorias.GetAll)]
         public ActionResult GetAll()
         {
             if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetWithCat_id")]
+        [Route(ApiRoutes.Categorias.Get, Name = "GetWithCat_id")]
         public ActionResult Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -59,7 +59,8 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] CategoriaCreate categoriaCreate)
+        [Route(ApiRoutes.Categorias.Create)]
+        public ActionResult Create([FromBody] CategoriaCreate categoriaCreate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -79,7 +80,8 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] CategoriaUpdate categoriaUpdate)
+        [Route(ApiRoutes.Categorias.Update)]
+        public ActionResult Update([FromBody] CategoriaUpdate categoriaUpdate)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -97,7 +99,8 @@ namespace NeedDesk.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route(ApiRoutes.Categorias.Delete)]
         public ActionResult Delete(Guid id)
         {
             if (!ModelState.IsValid)
@@ -117,7 +120,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        [Route("status")]
+        [Route(ApiRoutes.Categorias.Status)]
         public ActionResult Status([FromBody] CategoriaStatus categoriaStatus)
         {
             if (!ModelState.IsValid)

@@ -24,7 +24,12 @@ namespace NeedDesk.Api.Routes
 
         public static class Categorias
         {
-            public const string GetAll = Base + "/Categorias/";
+            public const string GetAll = Base + "/categorias";
+            public const string Get = Base + "/categorias/{id}";
+            public const string Create = Base + "/categorias/";
+            public const string Update = Base + "/categorias";
+            public const string Delete = Base + "/categorias/{id}";
+            public const string Status = Base + "/categorias/status";
         }
     }
 }
