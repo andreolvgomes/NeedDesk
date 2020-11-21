@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeedDesk.Application.DTO.Users;
+using NeedDesk.Application.DTO.User;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Models;
 
 namespace NeedDesk.Api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
@@ -25,13 +25,17 @@ namespace NeedDesk.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public object Login([FromBody] LogIn login)
+        [Route(ApiRoutes.Users.LogIn)]
+        public ActionResult Login([FromBody] LogIn login)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             try
             {
-                var result = _loginAppService.FindByLogin(login);
+                User user = _loginAppService.FinByEmail(login.Use_email);
+                if (user == null) return NotFound();
+
+                var result = _loginAppService.SigIn(user);
                 if (result != null)
                     return Ok(result);
                 return NotFound();

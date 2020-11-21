@@ -28,24 +28,34 @@ namespace NeedDesk.Api.Tests.Config
             _client = appFactory.CreateClient();
         }
 
-        //protected async Task AuthenticationAsync()
-        //{
-        //    _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetJwtAsync());
-        //}
+        protected async Task AuthenticationAsync()
+        {
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await GetJwtAsync());
+        }
 
-        //private async Task<string> GetJwtAsync()
-        //{
-        //    // Arrange
-        //    var value = new UserCreate()
-        //    {
-        //        Tenant_id = TenantId.Tenant_id,
-        //        Use_email = "teste@gmail.com.br",
-        //        Use_senha = "123456"
-        //    };
+        private async Task<string> GetJwtAsync()
+        {
+            string use_email = "teste@gmail.com.br";
+            string use_senha = "123456";
+            // Arrange
+            var value = new UserCreate()
+            {
+                Tenant_id = TenantId.Tenant_id,
+                Use_email = use_email,
+                Use_senha = use_senha
+            };
 
-        //    // Act
-        //    var response = await _client.PostAsJsonAsync(ApiRoutes.Users.Create, value);
-        //    var result = await response.Content.ReadAsAsync<UserResult>();
-        //}
+            // Act
+            var responseCreateUser = await _client.PostAsJsonAsync(ApiRoutes.Users.Create, value);
+
+            var responseLogIn = await _client.PostAsJsonAsync(ApiRoutes.Users.LogIn, new LogIn()
+            {
+                 Use_senha = use_senha,
+                 Use_email = use_email
+            });
+
+            var sigInAuthorization = await responseLogIn.Content.ReadAsAsync<SigInAuthorization>();
+            return sigInAuthorization.Token;
+        }
     }
 }

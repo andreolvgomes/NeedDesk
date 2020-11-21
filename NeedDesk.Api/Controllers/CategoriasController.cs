@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NeedDesk.Application.DTO.Categoria;
@@ -11,6 +12,7 @@ using NeedDesk.Application.Interfaces;
 namespace NeedDesk.Api.Controllers
 {
     //[Route("api/[controller]")]
+    //[Authorize("Bearer")]
     [ApiController]
     public class CategoriasController : ControllerBase
     {

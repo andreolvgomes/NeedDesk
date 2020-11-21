@@ -2,7 +2,7 @@
 using AutoMapper.Configuration;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
-using NeedDesk.Application.DTO.Users;
+using NeedDesk.Application.DTO.User;
 using NeedDesk.Application.Interfaces;
 using NeedDesk.Domain.Interfaces.Repositories;
 using NeedDesk.Domain.Models;
@@ -53,15 +53,13 @@ namespace NeedDesk.Application.Services
             //_configuration = configuration;
         }
 
-        public object FindByLogin(LogIn login)
+        public User FinByEmail(string email)
         {
-            User user = _userRepository.FindByLogin(login.Use_email);
-            if (user == null)
-                return new LoginValid("Usuário ou senha inválido(1)");
-            
-            if (!user.Use_senha.Equals(login.Use_senha))
-                return new LoginValid("Usuário ou senha inválido(2)");
+            return _userRepository.FindByLogin(email);
+        }
 
+        public SigInAuthorization SigIn(User user)
+        {
             ClaimsIdentity identity = new ClaimsIdentity(
                 new GenericIdentity(user.Use_email),
                 new[]
@@ -91,17 +89,17 @@ namespace NeedDesk.Application.Services
             });
 
             return handler.WriteToken(securityToken);
-        }
+        }        
 
-        private object Successful(Guid tenant, DateTime createDate, DateTime expiration, string token, User user)
+        private SigInAuthorization Successful(Guid tenant, DateTime createDate, DateTime expiration, string token, User user)
         {
-            return new
+            return new SigInAuthorization()
             {
                 Authenticated = true,
                 Tenant = tenant,
-                Created = createDate.ToString("yyyy-MM-dd HH:mm:ss"),
-                Expiration = expiration.ToString("yyyy-MM-dd HH:mm:ss"),
-                AcessToken = token,
+                Created = createDate,
+                Expiration = expiration,
+                Token = token,
                 UserName = user.Use_email,
                 Message = "Usuário logado com sucesso"
             };

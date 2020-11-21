@@ -40,7 +40,7 @@ namespace NeedDesk.Api
             public const string Update = Base + "/users";
             public const string Delete = Base + "/users/{id}";
 
-            public const string LogIn = Base + "/users/{id}";
+            public const string LogIn = Base + "/login";
         }
     }
 }

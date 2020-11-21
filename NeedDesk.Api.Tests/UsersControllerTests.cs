@@ -15,6 +15,8 @@ namespace NeedDesk.Api.Tests
         [Trait("Users", "Integração API")]
         public async Task Create_CadastrarNovo_DeveRetornarSucesso()
         {
+            await AuthenticationAsync();
+
             // Arrange
             var value = new UserCreate()
             {

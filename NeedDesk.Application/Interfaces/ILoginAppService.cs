@@ -1,4 +1,4 @@
-﻿using NeedDesk.Application.DTO.Users;
+﻿using NeedDesk.Application.DTO.User;
 using NeedDesk.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ namespace NeedDesk.Application.Interfaces
 {
     public interface ILoginAppService
     {
-        object FindByLogin(LogIn login);
+        User FinByEmail(string email);
+        SigInAuthorization SigIn(User user);
     }
 }

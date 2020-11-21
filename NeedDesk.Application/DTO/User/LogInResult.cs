@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace NeedDesk.Application.DTO.Users
+namespace NeedDesk.Application.DTO.User
 {
     public class LogIn
     {

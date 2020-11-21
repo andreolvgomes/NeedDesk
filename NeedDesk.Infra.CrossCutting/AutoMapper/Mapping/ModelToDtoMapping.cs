@@ -7,11 +7,7 @@ using NeedDesk.Application.DTO.Departamento;
 using NeedDesk.Application.DTO.Prioridade;
 using NeedDesk.Application.DTO.Status;
 using NeedDesk.Application.DTO.User;
-using NeedDesk.Application.DTO.Users;
 using NeedDesk.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NeedDesk.Infra.CrossCutting.AutoMapper.Mapping
 {
