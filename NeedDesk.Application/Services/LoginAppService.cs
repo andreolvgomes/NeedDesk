@@ -53,7 +53,7 @@ namespace NeedDesk.Application.Services
             //_configuration = configuration;
         }
 
-        public object FindByLogin(LoginDto login)
+        public object FindByLogin(LogIn login)
         {
             User user = _userRepository.FindByLogin(login.Use_email);
             if (user == null)

@@ -6,7 +6,7 @@ using NeedDesk.Application.Interfaces;
 
 namespace NeedDesk.Api.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -19,6 +19,7 @@ namespace NeedDesk.Api.Controllers
 
         //[Authorize("Bearer")]
         [HttpGet]
+        [Route(ApiRoutes.Users.GetAll)]
         public ActionResult GetAll()
         {
             if (!ModelState.IsValid)
@@ -35,7 +36,7 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetWithId")]
+        [Route(ApiRoutes.Users.Get, Name = "GetWithId")]
         public ActionResult Get(Guid id)
         {
             if (!ModelState.IsValid)
@@ -52,7 +53,8 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] UserCreate user)
+        [Route(ApiRoutes.Users.Create)]
+        public ActionResult Create([FromBody] UserCreate user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -72,7 +74,8 @@ namespace NeedDesk.Api.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] UserUpdateDto user)
+        [Route(ApiRoutes.Users.Update)]
+        public ActionResult Update([FromBody] UserUpdate user)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -88,7 +91,8 @@ namespace NeedDesk.Api.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route(ApiRoutes.Users.Delete)]
         public ActionResult Delete(Guid id)
         {
             if (!ModelState.IsValid)

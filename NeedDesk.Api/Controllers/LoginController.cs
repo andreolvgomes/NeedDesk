@@ -25,29 +25,9 @@ namespace NeedDesk.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public object Login([FromBody] LoginDto login)
+        public object Login([FromBody] LogIn login)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (login == null) return BadRequest(ModelState);
-
-            try
-            {
-                var result = _loginAppService.FindByLogin(login);
-                if (result != null)
-                    return Ok(result);
-                return NotFound();
-            }
-            catch (ArgumentException ex)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
-            }
-        }
-
-        [HttpPut]
-        public object TrocarSenha([FromBody] LoginDto login)
-        {
-            if (!ModelState.IsValid) return BadRequest(ModelState);
-            if (login == null) return BadRequest(ModelState);
 
             try
             {

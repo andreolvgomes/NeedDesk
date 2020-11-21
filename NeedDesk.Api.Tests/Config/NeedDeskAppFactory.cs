@@ -11,8 +11,8 @@ namespace NeedDesk.Api.Tests.Config
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            builder.UseStartup<TStartup>();
-            builder.UseEnvironment("Testing");
+            //builder.UseStartup<TStartup>();
+            //builder.UseEnvironment("Testing");
         }       
     }
 }

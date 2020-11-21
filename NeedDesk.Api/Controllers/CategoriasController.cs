@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NeedDesk.Api.Routes;
 using NeedDesk.Application.DTO.Categoria;
 using NeedDesk.Application.Interfaces;
 

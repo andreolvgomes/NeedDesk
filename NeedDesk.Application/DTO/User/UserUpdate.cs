@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO.User
 {
-    public class UserUpdateDto
+    public class UserUpdate
     {
         [Required(ErrorMessage = "Id é um campo obrigatório")]
         public Guid Use_id { get; set; }

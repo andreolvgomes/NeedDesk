@@ -41,7 +41,7 @@ namespace NeedDesk.Application.Services
             _userRepository.Delete(id);
         }
 
-        public void Update(UserUpdateDto user)
+        public void Update(UserUpdate user)
         {
             _userRepository.Update(_mapper.Map<User>(user));
         }

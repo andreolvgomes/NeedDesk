@@ -13,9 +13,9 @@ namespace NeedDesk.Api.Tests
     [Collection(nameof(IntegrationApiTestsFixtureCollection))]
     public class PrioridadesControllerTests
     {
-        private readonly IntegrationTestsFixture<StartupApiTests> _testsFixture;
+        private readonly IntegrationTestsFixture<Startup> _testsFixture;
 
-        public PrioridadesControllerTests(IntegrationTestsFixture<StartupApiTests> testsFixture)
+        public PrioridadesControllerTests(IntegrationTestsFixture<Startup> testsFixture)
         {
             _testsFixture = testsFixture;
         }

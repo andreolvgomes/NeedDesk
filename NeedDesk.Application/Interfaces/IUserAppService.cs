@@ -12,7 +12,7 @@ namespace NeedDesk.Application.Interfaces
         Guid Create(UserCreate user);
         void Remove(Guid id);
         UserResult Get(Guid use_id);
-        void Update(UserUpdateDto user);
+        void Update(UserUpdate user);
         IEnumerable<UserResult> All();
     }
 }

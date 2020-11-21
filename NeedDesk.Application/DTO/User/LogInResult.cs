@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO.Users
 {
-    public class LoginDto
+    public class LogIn
     {
         [Required(ErrorMessage = "E-mail é obritatório")]
         [EmailAddress(ErrorMessage = "E-mail com formato inválido")]

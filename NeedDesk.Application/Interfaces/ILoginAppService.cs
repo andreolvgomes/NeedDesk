@@ -8,6 +8,6 @@ namespace NeedDesk.Application.Interfaces
 {
     public interface ILoginAppService
     {
-        object FindByLogin(LoginDto login);
+        object FindByLogin(LogIn login);
     }
 }
