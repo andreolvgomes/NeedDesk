@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 
-namespace NeedDesk.Api.Installer
+namespace NeedDesk.Api.Installers
 {
     public class SwaggerGenInstaller : IInstaller
     {

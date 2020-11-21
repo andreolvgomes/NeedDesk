@@ -9,6 +9,6 @@ namespace NeedDesk.Application.Interfaces
     public interface ILoginAppService
     {
         User FinByEmail(string email);
-        SigInAuthorization SigIn(User user);
+        AuthenticationResult SigIn(User user);
     }
 }

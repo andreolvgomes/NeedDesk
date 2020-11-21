@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NeedDesk.Api.Installer
+namespace NeedDesk.Api.Installers
 {
     public interface IInstaller
     {

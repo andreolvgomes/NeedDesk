@@ -4,9 +4,9 @@ using System.Text;
 
 namespace NeedDesk.Application.DTO.User
 {
-    public class SigInAuthorization
+    public class AuthenticationResult
     {
-        public bool Authenticated { get; set; }
+        public bool Success { get; set; }
         public Guid Tenant { get; set; }
         public DateTime Created { get; set; }
         public DateTime Expiration { get; set; }

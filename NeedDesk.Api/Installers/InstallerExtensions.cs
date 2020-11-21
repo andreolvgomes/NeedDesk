@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NeedDesk.Api.Installer
+namespace NeedDesk.Api.Installers
 {
     public static class InstallerExtensions
     {

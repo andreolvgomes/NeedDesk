@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using NeedDesk.Api.Installer;
+using NeedDesk.Api.Installers;
 using NeedDesk.Domain.Security;
 using NeedDesk.Infra.CrossCutting.AutoMapper;
 using NeedDesk.Infra.CrossCutting.DependecyInjection;

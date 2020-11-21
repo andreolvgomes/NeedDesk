@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NeedDesk.Infra.CrossCutting.AutoMapper;
 
-namespace NeedDesk.Api.Installer
+namespace NeedDesk.Api.Installers
 {
     public class MvcInstaller : IInstaller
     {

@@ -35,26 +35,30 @@ namespace NeedDesk.Api.Tests.Config
 
         private async Task<string> GetJwtAsync()
         {
-            string use_email = "teste@gmail.com.br";
-            string use_senha = "123456";
-            // Arrange
-            var value = new UserCreate()
+            if (!UserAuthentication.IsAuthentication())
             {
-                Tenant_id = TenantId.Tenant_id,
-                Use_email = use_email,
-                Use_senha = use_senha
-            };
+                UserAuthentication.Email = "teste@gmail.com.br";
+                UserAuthentication.Password = "123456";
 
-            // Act
-            var responseCreateUser = await _client.PostAsJsonAsync(ApiRoutes.Users.Create, value);
+                // Arrange
+                var value = new UserCreate()
+                {
+                    Tenant_id = TenantId.Tenant_id,
+                    Use_email = UserAuthentication.Email,
+                    Use_senha = UserAuthentication.Password
+                };
 
-            var responseLogIn = await _client.PostAsJsonAsync(ApiRoutes.Users.LogIn, new LogIn()
+                // Act
+                await _client.PostAsJsonAsync(ApiRoutes.Users.Create, value);
+            }
+
+            var responseLogIn = await _client.PostAsJsonAsync(ApiRoutes.Identity.LogIn, new LogIn()
             {
-                 Use_senha = use_senha,
-                 Use_email = use_email
+                 Use_senha = UserAuthentication.Password,
+                 Use_email = UserAuthentication.Email
             });
 
-            var sigInAuthorization = await responseLogIn.Content.ReadAsAsync<SigInAuthorization>();
+            var sigInAuthorization = await responseLogIn.Content.ReadAsAsync<AuthenticationResult>();
             return sigInAuthorization.Token;
         }
     }

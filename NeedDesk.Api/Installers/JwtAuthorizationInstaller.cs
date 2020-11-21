@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using NeedDesk.Domain.Security;
 using System;
 
-namespace NeedDesk.Api.Installer
+namespace NeedDesk.Api.Installers
 {
     public class JwtAuthorizationInstaller : IInstaller
     {

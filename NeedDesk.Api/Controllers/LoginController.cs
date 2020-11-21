@@ -25,7 +25,7 @@ namespace NeedDesk.Api.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        [Route(ApiRoutes.Users.LogIn)]
+        [Route(ApiRoutes.Identity.LogIn)]
         public ActionResult Login([FromBody] LogIn login)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);

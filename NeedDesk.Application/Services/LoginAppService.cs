@@ -58,7 +58,7 @@ namespace NeedDesk.Application.Services
             return _userRepository.FindByLogin(email);
         }
 
-        public SigInAuthorization SigIn(User user)
+        public AuthenticationResult SigIn(User user)
         {
             ClaimsIdentity identity = new ClaimsIdentity(
                 new GenericIdentity(user.Use_email),
@@ -91,11 +91,11 @@ namespace NeedDesk.Application.Services
             return handler.WriteToken(securityToken);
         }        
 
-        private SigInAuthorization Successful(Guid tenant, DateTime createDate, DateTime expiration, string token, User user)
+        private AuthenticationResult Successful(Guid tenant, DateTime createDate, DateTime expiration, string token, User user)
         {
-            return new SigInAuthorization()
+            return new AuthenticationResult()
             {
-                Authenticated = true,
+                Success = true,
                 Tenant = tenant,
                 Created = createDate,
                 Expiration = expiration,
