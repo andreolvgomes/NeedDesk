@@ -16,6 +16,7 @@ using NeedDesk.Application.DTO.Cliente;
 namespace NeedDesk.Api.Tests.Config
 {
     [CollectionDefinition(nameof(IntegrationApiTestsFixtureCollection))]
+    //public class IntegrationApiTestsFixtureCollection : ICollectionFixture<IntegrationTestsFixture<StartupApiTests>>
     public class IntegrationApiTestsFixtureCollection : ICollectionFixture<IntegrationTestsFixture<StartupApiTests>>
     {
     }

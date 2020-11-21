@@ -63,9 +63,7 @@ namespace NeedDesk.Api
             });
 
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -158,6 +156,6 @@ namespace NeedDesk.Api
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
                     .RequireAuthenticatedUser().Build());
             });
-        }        
+        }
     }
 }
