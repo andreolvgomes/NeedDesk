@@ -11,11 +11,11 @@ using Xunit;
 namespace NeedDesk.Api.Tests
 {
     [Collection(nameof(IntegrationApiTestsFixtureCollection))]
-    public class DepartamentosTests
+    public class DepartamentosControllerTests
     {
         private readonly IntegrationTestsFixture<StartupApiTests> _testsFixture;
 
-        public DepartamentosTests(IntegrationTestsFixture<StartupApiTests> testsFixture)
+        public DepartamentosControllerTests(IntegrationTestsFixture<StartupApiTests> testsFixture)
         {
             _testsFixture = testsFixture;
         }
