@@ -20,7 +20,7 @@ namespace NeedDesk.Api.Tests
             _testsFixture = testsFixture;
         }
 
-        [Fact(DisplayName = "Cadastrar nova Categoria")]
+        [Fact(DisplayName = "Cadastrar novo Colaborador")]
         [Trait("Colaboradores", "Integração API")]
         public async Task NovaColaborador_CadastrarNovo_DeveCadastrarSucesso()
         {
